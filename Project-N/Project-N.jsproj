@@ -85,6 +85,9 @@
     <Content Include="**\**" Exclude="**\platforms\**;**\bin\**;**\bld\**;**\node_modules\**;**\simulation\**;**\plugins\**;.gitignore;ProjectN.*" />
   </ItemGroup>
   <ItemGroup>
+    <Content Remove="www\temp\**" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Update="config.xml">
       <SubType>Designer</SubType>
     </Content>

@@ -1,7 +1,13 @@
 {
-    "name": "Project-N",
-    "version": "1.0.0",
-    "private": true,
-    "dependencies": {
+  "name": "Project-N",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "cordova-plugin-whitelist": "1.2.2"
+  },
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-whitelist": {}
     }
+  }
 }

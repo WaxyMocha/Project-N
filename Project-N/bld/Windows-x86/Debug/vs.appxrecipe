@@ -1,0 +1,290 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>WARIATON</Machine>
+    <WindowsUser>damia</WindowsUser>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetOsVersion>10.0</TargetOsVersion>
+    <TargetOsDescription>Windows 10.0</TargetOsDescription>
+    <SolutionConfiguration>debug|x86</SolutionConfiguration>
+    <PackageArchitecture>x86</PackageArchitecture>
+    <PackageIdentityName>0ab0a670-3ab9-11e8-8fd1-afacd7b67dd5</PackageIdentityName>
+    <PackageIdentityPublisher>CN=Apache Cordova Team</PackageIdentityPublisher>
+    <IntermediateOutputPath>F:\Programowanie\JS\Project-N\Project-N\platforms\windows\build\windows\bld\</IntermediateOutputPath>
+    <RemoteDeploymentType>
+    </RemoteDeploymentType>
+    <PackageRegistrationPath>
+    </PackageRegistrationPath>
+    <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
+    <DeployOptionalPackages>false</DeployOptionalPackages>
+    <WindowsSdkPath>
+    </WindowsSdkPath>
+    <LayoutDir>F:\Programowanie\JS\Project-N\Project-N\platforms\windows\build\windows\debug\x86\win10\AppX</LayoutDir>
+    <RegisteredManifestChecksum>F1C375A37B96519D0A1152E4EEF6CCB2AA60512029F27B25630916F58822EABA</RegisteredManifestChecksum>
+    <RegisteredPackageMoniker>io.cordova.myapp9900e4_1.0.0.0_x86__h35559jr9hy9m</RegisteredPackageMoniker>
+    <RegisteredUserModeAppID>io.cordova.myapp9900e4_h35559jr9hy9m!io.cordova.myapp9900e4</RegisteredUserModeAppID>
+    <RegisteredPackageID>io.cordova.myapp9900e4</RegisteredPackageID>
+    <RegisteredPackagePublisher>CN=Apache Cordova Team</RegisteredPackagePublisher>
+    <RegisteredVersion>1.0.0.0</RegisteredVersion>
+    <JitOptimizationSuppressed>True</JitOptimizationSuppressed>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\build\windows\debug\x86\win10\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2018-04-07T23:12:01.176</Modified>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\images\SplashScreen.scale-100.png">
+      <PackagePath>images\SplashScreen.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2018-04-07T23:11:49.008</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\images\Square150x150Logo.scale-100.png">
+      <PackagePath>images\Square150x150Logo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2018-04-07T23:11:49.026</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\images\Square30x30Logo.scale-100.png">
+      <PackagePath>images\Square30x30Logo.scale-100.png</PackagePath>
+      <Modified>2018-04-07T23:11:49.046</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\images\Square310x310Logo.scale-100.png">
+      <PackagePath>images\Square310x310Logo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2018-04-07T23:11:49.057</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\images\Square44x44Logo.scale-100.png">
+      <PackagePath>images\Square44x44Logo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2018-04-07T23:11:49.063</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\images\Square70x70Logo.scale-100.png">
+      <PackagePath>images\Square70x70Logo.scale-100.png</PackagePath>
+      <Modified>2018-04-07T23:11:49.076</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\images\Square71x71Logo.scale-100.png">
+      <PackagePath>images\Square71x71Logo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2018-04-07T23:11:49.081</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\images\StoreLogo.scale-100.png">
+      <PackagePath>images\StoreLogo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2018-04-07T23:11:49.111</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\images\Wide310x150Logo.scale-100.png">
+      <PackagePath>images\Wide310x150Logo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2018-04-07T23:11:49.143</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\www\images\cordova.png">
+      <PackagePath>www\images\cordova.png</PackagePath>
+      <Modified>2018-04-07T23:11:48.711</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\www\cordova-js-src\confighelper.js">
+      <PackagePath>www\cordova-js-src\confighelper.js</PackagePath>
+      <Modified>2018-04-07T23:11:52.011</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\www\cordova-js-src\exec.js">
+      <PackagePath>www\cordova-js-src\exec.js</PackagePath>
+      <Modified>2018-04-07T23:11:52.013</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\www\cordova-js-src\platform.js">
+      <PackagePath>www\cordova-js-src\platform.js</PackagePath>
+      <Modified>2018-04-07T23:11:52.014</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\www\cordova-js-src\splashscreen.js">
+      <PackagePath>www\cordova-js-src\splashscreen.js</PackagePath>
+      <Modified>2018-04-07T23:11:52.016</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\www\cordova.js">
+      <PackagePath>www\cordova.js</PackagePath>
+      <Modified>2018-04-07T23:11:48.637</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\www\cordova_plugins.js">
+      <PackagePath>www\cordova_plugins.js</PackagePath>
+      <Modified>2018-04-07T23:11:52.019</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\www\plugins\cordova-plugin-device\src\windows\DeviceProxy.js">
+      <PackagePath>www\plugins\cordova-plugin-device\src\windows\DeviceProxy.js</PackagePath>
+      <Modified>2018-04-07T23:11:52.038</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\www\plugins\cordova-plugin-device\www\device.js">
+      <PackagePath>www\plugins\cordova-plugin-device\www\device.js</PackagePath>
+      <Modified>2018-04-07T23:11:52.039</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\www\plugins\cordova-plugin-dialogs\src\windows\NotificationProxy.js">
+      <PackagePath>www\plugins\cordova-plugin-dialogs\src\windows\NotificationProxy.js</PackagePath>
+      <Modified>2018-04-07T23:11:52.042</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\www\plugins\cordova-plugin-dialogs\www\notification.js">
+      <PackagePath>www\plugins\cordova-plugin-dialogs\www\notification.js</PackagePath>
+      <Modified>2018-04-07T23:11:52.044</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\www\plugins\cordova-plugin-file\src\windows\FileProxy.js">
+      <PackagePath>www\plugins\cordova-plugin-file\src\windows\FileProxy.js</PackagePath>
+      <Modified>2018-04-07T23:11:52.047</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\www\plugins\cordova-plugin-file\www\browser\isChrome.js">
+      <PackagePath>www\plugins\cordova-plugin-file\www\browser\isChrome.js</PackagePath>
+      <Modified>2018-04-07T23:11:52.049</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\www\plugins\cordova-plugin-file\www\DirectoryEntry.js">
+      <PackagePath>www\plugins\cordova-plugin-file\www\DirectoryEntry.js</PackagePath>
+      <Modified>2018-04-07T23:11:52.051</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\www\plugins\cordova-plugin-file\www\DirectoryReader.js">
+      <PackagePath>www\plugins\cordova-plugin-file\www\DirectoryReader.js</PackagePath>
+      <Modified>2018-04-07T23:11:52.052</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\www\plugins\cordova-plugin-file\www\Entry.js">
+      <PackagePath>www\plugins\cordova-plugin-file\www\Entry.js</PackagePath>
+      <Modified>2018-04-07T23:11:52.054</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\www\plugins\cordova-plugin-file\www\File.js">
+      <PackagePath>www\plugins\cordova-plugin-file\www\File.js</PackagePath>
+      <Modified>2018-04-07T23:11:52.056</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\www\plugins\cordova-plugin-file\www\FileEntry.js">
+      <PackagePath>www\plugins\cordova-plugin-file\www\FileEntry.js</PackagePath>
+      <Modified>2018-04-07T23:11:52.058</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\www\plugins\cordova-plugin-file\www\FileError.js">
+      <PackagePath>www\plugins\cordova-plugin-file\www\FileError.js</PackagePath>
+      <Modified>2018-04-07T23:11:52.059</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\www\plugins\cordova-plugin-file\www\FileReader.js">
+      <PackagePath>www\plugins\cordova-plugin-file\www\FileReader.js</PackagePath>
+      <Modified>2018-04-07T23:11:52.062</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\www\plugins\cordova-plugin-file\www\FileSystem.js">
+      <PackagePath>www\plugins\cordova-plugin-file\www\FileSystem.js</PackagePath>
+      <Modified>2018-04-07T23:11:52.065</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\www\plugins\cordova-plugin-file\www\fileSystemPaths.js">
+      <PackagePath>www\plugins\cordova-plugin-file\www\fileSystemPaths.js</PackagePath>
+      <Modified>2018-04-07T23:11:52.067</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\www\plugins\cordova-plugin-file\www\fileSystems.js">
+      <PackagePath>www\plugins\cordova-plugin-file\www\fileSystems.js</PackagePath>
+      <Modified>2018-04-07T23:11:52.068</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\www\plugins\cordova-plugin-file\www\FileUploadOptions.js">
+      <PackagePath>www\plugins\cordova-plugin-file\www\FileUploadOptions.js</PackagePath>
+      <Modified>2018-04-07T23:11:52.070</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\www\plugins\cordova-plugin-file\www\FileUploadResult.js">
+      <PackagePath>www\plugins\cordova-plugin-file\www\FileUploadResult.js</PackagePath>
+      <Modified>2018-04-07T23:11:52.072</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\www\plugins\cordova-plugin-file\www\FileWriter.js">
+      <PackagePath>www\plugins\cordova-plugin-file\www\FileWriter.js</PackagePath>
+      <Modified>2018-04-07T23:11:52.075</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\www\plugins\cordova-plugin-file\www\Flags.js">
+      <PackagePath>www\plugins\cordova-plugin-file\www\Flags.js</PackagePath>
+      <Modified>2018-04-07T23:11:52.077</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\www\plugins\cordova-plugin-file\www\LocalFileSystem.js">
+      <PackagePath>www\plugins\cordova-plugin-file\www\LocalFileSystem.js</PackagePath>
+      <Modified>2018-04-07T23:11:52.079</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\www\plugins\cordova-plugin-file\www\Metadata.js">
+      <PackagePath>www\plugins\cordova-plugin-file\www\Metadata.js</PackagePath>
+      <Modified>2018-04-07T23:11:52.080</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\www\plugins\cordova-plugin-file\www\ProgressEvent.js">
+      <PackagePath>www\plugins\cordova-plugin-file\www\ProgressEvent.js</PackagePath>
+      <Modified>2018-04-07T23:11:52.082</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\www\plugins\cordova-plugin-file\www\requestFileSystem.js">
+      <PackagePath>www\plugins\cordova-plugin-file\www\requestFileSystem.js</PackagePath>
+      <Modified>2018-04-07T23:11:52.084</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\www\plugins\cordova-plugin-file\www\resolveLocalFileSystemURI.js">
+      <PackagePath>www\plugins\cordova-plugin-file\www\resolveLocalFileSystemURI.js</PackagePath>
+      <Modified>2018-04-07T23:11:52.085</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\www\plugins\cordova-plugin-splashscreen\www\splashscreen.js">
+      <PackagePath>www\plugins\cordova-plugin-splashscreen\www\splashscreen.js</PackagePath>
+      <Modified>2018-04-07T23:11:52.086</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\www\plugins\cordova-plugin-splashscreen\www\windows\SplashScreenProxy.js">
+      <PackagePath>www\plugins\cordova-plugin-splashscreen\www\windows\SplashScreenProxy.js</PackagePath>
+      <Modified>2018-04-07T23:11:52.087</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\www\scripts\index.js">
+      <PackagePath>www\scripts\index.js</PackagePath>
+      <Modified>2018-04-07T23:11:48.752</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\www\scripts\materialize.js">
+      <PackagePath>www\scripts\materialize.js</PackagePath>
+      <Modified>2018-04-07T23:11:52.094</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\www\scripts\materialize.min.js">
+      <PackagePath>www\scripts\materialize.min.js</PackagePath>
+      <Modified>2018-04-07T23:11:52.099</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\www\scripts\parse.js">
+      <PackagePath>www\scripts\parse.js</PackagePath>
+      <Modified>2018-04-07T23:11:52.100</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\www\scripts\platformOverrides.js">
+      <PackagePath>www\scripts\platformOverrides.js</PackagePath>
+      <Modified>2018-04-07T23:11:48.822</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\www\scripts\winstore-jscompat.js">
+      <PackagePath>www\scripts\winstore-jscompat.js</PackagePath>
+      <Modified>2018-04-07T23:11:48.839</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\www\WinJS\js\base.js">
+      <PackagePath>www\WinJS\js\base.js</PackagePath>
+      <Modified>2018-04-07T23:11:48.615</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\www\css\index.css">
+      <PackagePath>www\css\index.css</PackagePath>
+      <Modified>2018-04-07T23:11:52.022</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\www\css\materialize.css">
+      <PackagePath>www\css\materialize.css</PackagePath>
+      <Modified>2018-04-07T23:11:52.025</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\www\css\materialize.min.css">
+      <PackagePath>www\css\materialize.min.css</PackagePath>
+      <Modified>2018-04-07T23:11:52.029</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\www\css\notification.css">
+      <PackagePath>www\css\notification.css</PackagePath>
+      <Modified>2018-04-07T23:11:52.031</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\www\css\splashscreen.css">
+      <PackagePath>www\css\splashscreen.css</PackagePath>
+      <Modified>2018-04-07T23:11:48.692</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\www\index.html">
+      <PackagePath>www\index.html</PackagePath>
+      <Modified>2018-04-07T23:11:48.732</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\www\parse.html">
+      <PackagePath>www\parse.html</PackagePath>
+      <Modified>2018-04-07T23:11:52.035</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\www\scripts\plan\o6.html">
+      <PackagePath>www\scripts\plan\o6.html</PackagePath>
+      <Modified>2018-04-07T23:11:52.102</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\config.xml">
+      <PackagePath>config.xml</PackagePath>
+      <Modified>2018-04-07T23:11:51.613</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="F:\Programowanie\JS\Project-N\Project-N\platforms\windows\build\windows\debug\x86\win10\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2018-04-07T23:11:59.874</Modified>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+</Project>
