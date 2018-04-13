@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
+    "cordova-android": "^6.1.2",
     "cordova-plugin-whitelist": "1.2.2"
   },
   "cordova": {
