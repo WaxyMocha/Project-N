@@ -12,11 +12,7 @@ function onDeviceReady() {
     document.addEventListener( 'resume', onResume.bind( this ), false );
         
     // TODO: Załadowano oprogramowanie Cordova. Wykonaj tutaj wszystkie wymagane kroki inicjowania tego oprogramowania.
-    var parentElement = document.getElementById('deviceready');
-    var listeningElement = document.querySelector('.listening');
-    var receivedElement = document.querySelector('.received');
-    listeningElement.setAttribute('style', 'display:none;');
-    receivedElement.setAttribute('style', 'display:block;');
+  
 };
 
 function onPause() {
