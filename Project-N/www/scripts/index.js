@@ -10,7 +10,7 @@ function onDeviceReady() {
     // Obsługa zdarzeń wstrzymywania i wznawiania działania oprogramowania Cordova
     document.addEventListener( 'pause', onPause.bind( this ), false );
     document.addEventListener( 'resume', onResume.bind( this ), false );
-        
+    statusbarTransparent.enable(); 
     // TODO: Załadowano oprogramowanie Cordova. Wykonaj tutaj wszystkie wymagane kroki inicjowania tego oprogramowania.
   
 };
