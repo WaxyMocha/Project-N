@@ -12,6 +12,10 @@ function zaladujPlan(url) {
   iframe.style.display = 'none';
   document.body.appendChild(iframe);
   iframe.addEventListener('load', parsujPlan);
+  var iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+  if (  iframeDoc.readyState  != 'complete' ) {
+    console.error("Couldn't load plan");
+  }
 }
 
 let plan;
