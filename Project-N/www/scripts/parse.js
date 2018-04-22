@@ -12,16 +12,16 @@ function zaladujPlan(url) {
   iframe.style.display = 'none';
   document.body.appendChild(iframe);
   iframe.addEventListener('load', parsujPlan);
-  var iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-  if (  iframeDoc.readyState  != 'complete' ) {
-    console.error("Couldn't load plan");
-  }
 }
 
 let plan;
 
 function parsujPlan() {
-  const iframe = document.getElementById('tPlan');
+    const iframe = document.getElementById('tPlan');
+    //var iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+    //if (iframeDoc.readyState != 'complete') {
+     //   console.error("Couldn't load plan");
+   // }
   let tabela = iframe.contentWindow.document.querySelector('.tabela'); //wczytanie tabelki z ramki
   let arr = [];
 

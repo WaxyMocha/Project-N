@@ -11,6 +11,10 @@ function onDeviceReady() {
     document.addEventListener( 'pause', onPause.bind( this ), false );
     document.addEventListener( 'resume', onResume.bind( this ), false );
     statusbarTransparent.enable(); 
+    navigator.splashscreen.hide();
+
+    //zainicjuj panel nawigacyjny (manu z lewej)
+    initNav();
     // TODO: Załadowano oprogramowanie Cordova. Wykonaj tutaj wszystkie wymagane kroki inicjowania tego oprogramowania.
   
 };

@@ -17,11 +17,31 @@
             <nav id="appBar" class="nav-wrapper navbar-fixed elevation-4">
                 <button id="menu-btn" class="waves-effect btn-flat"><i class="material-icons">menu</i></button>
             </nav>
-            <menu class="slidenav"></menu>
+            <menu class="nav">
+                <ul id="slide-out" class="sidenav">
+                    <li>
+                        <div class="user-view">
+                            <div class="background">
+                                <img src="images/menuHeader.png">
+                            </div>
+                            <a href="#user"><img class="circle" src="images/yuna.jpg"></a>
+                            <a href="#name"><span class="white-text name">John Doe</span></a>
+                            <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
+                        </div>
+                    </li>
+                    <li><a class="waves-effect" href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+                    <li><a class="waves-effect" href="#!">Second Link</a></li>
+                    <li><div class="divider"></div></li>
+                    <li><a class="subheader">Subheader</a></li>
+                    <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+                </ul>
+            </menu>
         </div>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="scripts/platformOverrides.js"></script>
         <script type="text/javascript" src="scripts/materialize.min.js"></script>
-        <script type="text/javascript" src="scripts/index.js"></script>
+        <script type="text/javascript" src="scripts/parse.js"></script>
+        <script type="text/javascript" src="scripts/interface.js"></script> 
+        <script type="text/javascript" src="scripts/index.js" defer></script>
     </body>
 </html>
