@@ -4,6 +4,7 @@
 // a następnie uruchom polecenie „window.location.reload()” w konsoli języka JavaScript.
 
 
+
 document.addEventListener( 'deviceready', onDeviceReady.bind( this ), false );
 
 function onDeviceReady() {
@@ -12,17 +13,22 @@ function onDeviceReady() {
     document.addEventListener( 'resume', onResume.bind( this ), false );
     statusbarTransparent.enable(); 
     navigator.splashscreen.hide();
-
-    //zainicjuj panel nawigacyjny (manu z lewej)
+    //window.plugins.headerColor.tint("#149b07"); //kolor w widoku otwartych apek
+    //zainicjuj panel nawigacyjny (menu z lewej)
     initNav();
-    // TODO: Załadowano oprogramowanie Cordova. Wykonaj tutaj wszystkie wymagane kroki inicjowania tego oprogramowania.
-  
+    initDzien();
+
+    zaladujPlan('./scripts/plan/o6.html');
+    
+
 };
 
 function onPause() {
-    // TODO: Ta aplikacja została zawieszona, Zapisz tutaj stan aplikacji.
+    // TODO: Ta aplikacja została zawieszona, Zapisz tutaj stan aplikacji. (np. powrót do ekranu głównego)
 };
 
 function onResume() {
     // TODO: Ta aplikacja została ponownie aktywowana. Przywróć tutaj stan aplikacji.
 };
+
+

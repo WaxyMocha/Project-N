@@ -1,43 +1,53 @@
 ﻿<!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-        <meta name="format-detection" content="telephone=no">
-        <meta name="msapplication-tap-highlight" content="no">
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-        <link type="text/css" rel="stylesheet" href="css/materialize.css" />
-        <link type="text/css" rel="stylesheet" href="css/shadows.css" />
-        <link type="text/css" rel="stylesheet" href="css/material-icons.css" />
-        <link rel="stylesheet" type="text/css" href="css/index.css">
-        <title>ProjectN</title>
-    </head>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' http://* 'unsafe-inline'; script-src 'self' http://* 'unsafe-inline' 'unsafe-eval'" />
+    <link type="text/css" rel="stylesheet" href="css/materialize.css" />
+    <link type="text/css" rel="stylesheet" href="css/shadows.css" />
+    <link type="text/css" rel="stylesheet" href="css/material-icons.css" />
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <title>ProjectN</title>
+</head>
     <body>
         <div class="app">
             <nav id="appBar" class="nav-wrapper navbar-fixed elevation-4">
                 <button id="menu-btn" class="waves-effect btn-flat"><i class="material-icons">menu</i></button>
+                <a class='dropdown-trigger btn-flat waves-effect btn-large' id="dzien1" href='#' data-target='dzien1c'>Poniedziałek</a>
+
+                <ul id='dzien1c' class='dropdown-content'>
+                    <li><a href="javascript:dzienMenu(0)">Poniedziałek</a></li>
+                    <li><a href="javascript:dzienMenu(1)">Wtorek</a></li>
+                    <li><a href="javascript:dzienMenu(2)">Środa</a></li>
+                    <li><a href="javascript:dzienMenu(3)">Czwartek</a></li>
+                    <li><a href="javascript:dzienMenu(4)">Piątek</a></li>
+                </ul>
+
             </nav>
             <menu class="nav">
                 <ul id="slide-out" class="sidenav">
                     <li>
                         <div class="user-view">
-                            <div class="background">
-                                <img src="images/menuHeader.png">
-                            </div>
-                            <a href="#user"><img class="circle" src="images/yuna.jpg"></a>
-                            <a href="#name"><span class="white-text name">John Doe</span></a>
-                            <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
+                         
                         </div>
                     </li>
-                    <li><a class="waves-effect" href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
-                    <li><a class="waves-effect" href="#!">Second Link</a></li>
-                    <li><div class="divider"></div></li>
-                    <li><a class="subheader">Subheader</a></li>
-                    <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+                    <li><a class="waves-effect" href="#!"><i class="material-icons">date_range</i>Plan lekcji</a></li>
+                    <li><a class="waves-effect" href="#!"><i class="material-icons">settings</i>Ustawienia</a></li>
                 </ul>
             </menu>
+            <main id="wrapper">
+                <ul id="plan" class="collapsible">
+
+                </ul>
+            </main>
         </div>
         <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="scripts/jquery.min.js" async></script>
+        <script type="text/javascript" src="scripts/pluginTests.js"></script>
         <script type="text/javascript" src="scripts/platformOverrides.js"></script>
         <script type="text/javascript" src="scripts/materialize.min.js"></script>
         <script type="text/javascript" src="scripts/parse.js"></script>
