@@ -17,6 +17,7 @@ function onDeviceReady() {
     //zainicjuj panel nawigacyjny (menu z lewej)
     initNav();
     initDzien();
+    initP();
 
     zaladujPlan('./scripts/plan/o6.html');
     

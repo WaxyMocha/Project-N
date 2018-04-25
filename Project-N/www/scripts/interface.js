@@ -5,12 +5,20 @@ let mainWrapper = document.getElementById('wrapper');
 let planInstance;
 let dzien;
 let dzienInstance;
+let p;
+let pInstance;
 
+
+let initP = function () {
+    p = document.getElementById('plan1');
+    pInstance = M.Dropdown.init(p);
+}
 
 let initDzien = function () {
     dzien = document.getElementById('dzien1');
     dzienInstance = M.Dropdown.init(dzien);
 }
+
 
 let initNav = function () {
     nav = document.querySelector('.sidenav');
@@ -30,6 +38,7 @@ let pokazPlan = function (dzien) {
         let cHead = document.createElement('div');
         let cBody = document.createElement('div');
         let sp = document.createElement('span');
+        cHead.innerHTML = plan[0][i] + '. ';
         if (temp.length == 0) { //okienko
             break;
         } else if (temp.length == 4) { //lekcje dzielone grupami
@@ -43,16 +52,16 @@ let pokazPlan = function (dzien) {
                 nau: temp[2].children[1].innerHTML,
                 gab: temp[2].children[2].innerHTML,
             };
-            cHead.innerHTML = `Grupa 1: ${gr1.lek}. Grupa 2: ${gr2.lek}`;
+            cHead.innerHTML += `Grupa 1: ${gr1.lek}. Grupa 2: ${gr2.lek}`;
             sp.innerHTML = `Nauczyciel: ${gr1.nau}/${gr2.nau}<br>Gabinet: ${gr1.gab}/${gr2.gab}`;
-        } else if (temp.length == 2) { //okienko jednej z grup
+        } else if (temp.length == 2 || temp.length == 1) { //okienko jednej z grup
             if (temp[0].children[0].innerHTML.search('-1/2') != -1) { //jeśli grupa 1
                 let gr1 = {
                     lek: temp[0].children[0].innerHTML.replace('-1/2', ''),
                     nau: temp[0].children[1].innerHTML,
                     gab: temp[0].children[2].innerHTML,
                 };
-                cHead.innerHTML = `Grupa 1: ${gr1.lek}. Grupa 2: Wolne`;
+                cHead.innerHTML += `Grupa 1: ${gr1.lek}. Grupa 2: Wolne`;
                 sp.innerHTML = `Nauczyciel: ${gr1.nau}/--<br>Gabinet: ${gr1.gab}/--`;
  
             } else if (temp[0].children[0].innerHTML.search('-2/2') != -1) { //jeśli grupa 2
@@ -61,7 +70,7 @@ let pokazPlan = function (dzien) {
                     nau: temp[0].children[1].innerHTML,
                     gab: temp[0].children[2].innerHTML,
                 };
-                cHead.innerHTML = `Grupa 1: Wolne. Grupa 2: ${gr2.lek}`;
+                cHead.innerHTML += `Grupa 1: Wolne. Grupa 2: ${gr2.lek}`;
                 sp.innerHTML = `Nauczyciel: --/${gr2.nau}<br>Gabinet: --/${gr2.gab}`;
             }
         } else if (temp.length == 5) { //lekcja całą klasą
@@ -70,7 +79,7 @@ let pokazPlan = function (dzien) {
                 nau: temp[2].innerHTML,
                 gab: temp[4].innerHTML,
             }
-            cHead.innerHTML = `${kl.lek}`;
+            cHead.innerHTML += `${kl.lek}`;
             sp.innerHTML = `Nauczyciel: ${kl.nau}<br>Gabinet: ${kl.gab}`;
         } else if (temp.length == 7) { //wf... cause... fuck you
             let gr1 = {
@@ -83,9 +92,10 @@ let pokazPlan = function (dzien) {
                 nau: temp[4].innerHTML,
                 gab: temp[6].innerHTML,
             };
-            cHead.innerHTML = `Grupa 1: ${gr1.lek}. Grupa 2: ${gr2.lek}`;
+            cHead.innerHTML += `Grupa 1: ${gr1.lek}. Grupa 2: ${gr2.lek}`;
             sp.innerHTML = `Nauczyciel: ${gr1.nau}/${gr2.nau}<br>Gabinet: ${gr1.gab}/${gr2.gab}`;
         }
+        sp.innerHTML += `<br><span class="clockP"><i class="material-icons">access_time</i> ${plan[1][i]}</span>`;
        // console.log(temp);
         cHead.classList.add('collapsible-header');
         cBody.appendChild(sp);
@@ -101,4 +111,9 @@ let dzienMenu = function (day) {
     pokazPlan(day);
     let d = ['', 'Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', ''];
     dzien.innerHTML = d[day + 1];
+}
+
+let planCh = function (plan) {
+    zaladujPlan(`./scripts/plan/o${plan}.html`);
+    p.innerHTML = plan;
 }

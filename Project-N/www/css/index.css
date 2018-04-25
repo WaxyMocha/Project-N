@@ -60,3 +60,11 @@ menu {
     color: white;
     min-width: 163px;
 }
+
+#plan1 {
+    color: white;
+}
+
+.clockP * {
+    vertical-align: middle;
+}
