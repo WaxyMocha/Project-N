@@ -40,8 +40,8 @@ let pokazPlan = function (dzien) {
         let sp = document.createElement('span');
         cHead.innerHTML = plan[0][i] + '. ';
         if (temp.length == 0) { //okienko
-            break;
-        } else if (temp.length == 4) { //lekcje dzielone grupami
+            continue;
+        } else if (temp.length == 4 || temp.length == 3) { //lekcje dzielone grupami
             let gr1 = {
                 lek: temp[0].children[0].innerHTML.replace('-1/2', ''),
                 nau: temp[0].children[1].innerHTML,
@@ -54,7 +54,7 @@ let pokazPlan = function (dzien) {
             };
             cHead.innerHTML += `Grupa 1: ${gr1.lek}. Grupa 2: ${gr2.lek}`;
             sp.innerHTML = `Nauczyciel: ${gr1.nau}/${gr2.nau}<br>Gabinet: ${gr1.gab}/${gr2.gab}`;
-        } else if (temp.length == 2 || temp.length == 1) { //okienko jednej z grup
+        } else if (temp.length == 2 || (temp.length == 1 && temp.children)) { //okienko jednej z grup
             if (temp[0].children[0].innerHTML.search('-1/2') != -1) { //jeśli grupa 1
                 let gr1 = {
                     lek: temp[0].children[0].innerHTML.replace('-1/2', ''),
@@ -81,17 +81,40 @@ let pokazPlan = function (dzien) {
             }
             cHead.innerHTML += `${kl.lek}`;
             sp.innerHTML = `Nauczyciel: ${kl.nau}<br>Gabinet: ${kl.gab}`;
+        } else if (temp.length == 1 && !temp.children) { //lekcja całą klasą
+            let kl = {
+                lek: temp[0].textContent,
+                nau: '--',
+                gab: '--',
+            }
+            cHead.innerHTML += `${kl.lek}`;
+            sp.innerHTML = `Nauczyciel: ${kl.nau}<br>Gabinet: ${kl.gab}`;
         } else if (temp.length == 7) { //wf... cause... fuck you
-            let gr1 = {
-                lek: temp[0].children[0].innerHTML.replace('-1/2', ''),
-                nau: temp[0].children[1].innerHTML,
-                gab: temp[0].children[2].innerHTML,
-            };
-            let gr2 = {
-                lek: temp[2].innerHTML,
-                nau: temp[4].innerHTML,
-                gab: temp[6].innerHTML,
-            };
+            let gr1, gr2;
+            if (temp[0].children) {
+                gr1 = {
+                    lek: temp[0].children[0].innerHTML.replace('-1/2', ''),
+                    nau: temp[0].children[1].innerHTML,
+                    gab: temp[0].children[2].innerHTML,
+                };
+                gr2 = {
+                    lek: temp[2].innerHTML,
+                    nau: temp[4].innerHTML,
+                    gab: temp[6].innerHTML,
+                };
+            } else {
+                gr1 = {
+                    lek: temp[0].innerHTML,
+                    nau: temp[2].innerHTML,
+                    gab: temp[4].innerHTML,
+                    
+                };
+                gr2 = {
+                    lek: temp[0].children[0].innerHTML.replace('-2/2', ''),
+                    nau: temp[0].children[1].innerHTML,
+                    gab: temp[0].children[2].innerHTML,
+                };
+            }
             cHead.innerHTML += `Grupa 1: ${gr1.lek}. Grupa 2: ${gr2.lek}`;
             sp.innerHTML = `Nauczyciel: ${gr1.nau}/${gr2.nau}<br>Gabinet: ${gr1.gab}/${gr2.gab}`;
         }
