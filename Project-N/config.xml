@@ -98,7 +98,7 @@
     <engine name="windows" spec="4.4.2" />
     <plugin name="cordova-plugin-device" spec="~2.0.1" />
     <plugin name="cordova-plugin-dialogs" spec="~2.0.1" />
-    <plugin name="cordova-plugin-file" spec="~4.3.3" />
+    <plugin name="cordova-plugin-file" spec="~5.0.0" />
     <plugin name="cordova-plugin-splashscreen" spec="~5.0.2" />
     <plugin name="phonegap-plugin-push" spec="~2.2.2" />
     <plugin name="cordova-plugin-crosswalk-webview" spec="~2.1.0" />
