@@ -72,6 +72,9 @@
         <header-file src="src/ios/APPLocalNotification.h" />
         <source-file src="src/ios/APPLocalNotification.m" />
 
+        <header-file src="src/ios/APPNotificationCategory.h" />
+        <source-file src="src/ios/APPNotificationCategory.m" />
+
         <header-file src="src/ios/APPNotificationContent.h" />
         <source-file src="src/ios/APPNotificationContent.m" />
 
@@ -115,10 +118,8 @@
                 android:name="de.appplant.cordova.plugin.localnotification.ClearReceiver"
                 android:exported="false" />
 
-            <activity
+            <service
                 android:name="de.appplant.cordova.plugin.localnotification.ClickReceiver"
-                android:launchMode="singleInstance"
-                android:theme="@android:style/Theme.Translucent"
                 android:exported="false" />
 
             <receiver
