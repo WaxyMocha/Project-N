@@ -56,5 +56,9 @@
     </plugin>
     <plugin name="cordova-plugin-statusbar" spec="^2.4.2" />
     <plugin name="cordova-plugin-local-notification" spec="^0.9.0-beta.2" />
+    <preference name="xwalkMultipleApk" value="false" />
+    <plugin name="net.ekuwang.cordova.plugin.statusbar" spec="~1.0.0" />
+    <engine name="ios" spec="4.2.0" />
+    <engine name="windows" spec="4.4.2" />
     <engine name="android" spec="7.0.0" />
 </widget>
