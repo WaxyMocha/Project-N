@@ -98,7 +98,6 @@
     <plugin name="cordova-plugin-dialogs" spec="~2.0.1" />
     <plugin name="cordova-plugin-splashscreen" spec="~5.0.2" />
     <plugin name="phonegap-plugin-push" spec="~2.2.2" />
-    <plugin name="net.ekuwang.cordova.plugin.statusbar" spec="~1.0.0" src="https://github.com/ekuwang/cordova-plugin-statusbar" />
     <plugin name="cordova-sqlite-storage" spec="~2.3.1" />
     <plugin name="code-push" spec="~2.0.5" />
     <plugin name="cordova-plugin-file-transfer" spec="~1.7.1" />
