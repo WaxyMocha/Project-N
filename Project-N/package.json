@@ -5,7 +5,7 @@
   "dependencies": {
     "code-push": "^2.0.5",
     "cordova-android": "7.0.0",
-    "cordova-android-support-gradle-release": "^1.4.0",
+    "cordova-android-support-gradle-release": "^1.4.2",
     "cordova-plugin-badge": "^0.8.7",
     "cordova-plugin-crosswalk-webview": "git+https://github.com/corrisoft/cordova-plugin-crosswalk-webview.git",
     "cordova-plugin-device": "~2.0.1",
@@ -39,11 +39,11 @@
       "cordova-plugin-file-transfer": {},
       "cordova-plugin-vibration": {},
       "cordova-plugin-headercolor": {},
+      "net.ekuwang.cordova.plugin.statusbar": {},
+      "cordova-plugin-file-downloader": {},
       "cordova-android-support-gradle-release": {
         "ANDROID_SUPPORT_VERSION": "27.+"
-      },
-      "net.ekuwang.cordova.plugin.statusbar": {},
-      "cordova-plugin-file-downloader": {}
+      }
     },
     "platforms": [
       "android"
