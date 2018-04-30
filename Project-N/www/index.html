@@ -72,11 +72,8 @@
         <script type="text/javascript" src="scripts/pluginTests.js"></script>
         <script type="text/javascript" src="scripts/platformOverrides.js"></script>
         <script type="text/javascript" src="scripts/materialize.min.js"></script>
-        <script type="text/javascript" src="scripts/parse.js"></script>
-        <script type="text/javascript" src="scripts/interface.js"></script> 
-        <script type="text/javascript" src="scripts/index.js" defer></script>
         <script type="text/javascript">
-            downloader.init({folder: "plans", fileSystem:cordova.file.dataDirectory , delete: false});
+            downloader.init({folder: "plan", fileSystem:cordova.file.dataDirectory , delete: false});
             //downloader.get("http://www.zse.zary.pl/plan/plany/o6.html");
             downloader.getMultipleFiles([{url:"http://www.zse.zary.pl/plan/plany/o1.html"},
                                         {url:"http://www.zse.zary.pl/plan/plany/o2.html"},
@@ -103,5 +100,8 @@
             document.body.appendChild(frame);
             */
         </script>
+        <script type="text/javascript" src="scripts/parse.js"></script>
+        <script type="text/javascript" src="scripts/interface.js"></script> 
+        <script type="text/javascript" src="scripts/index.js" defer></script>
     </body>
 </html>

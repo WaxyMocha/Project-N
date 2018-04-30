@@ -19,7 +19,7 @@ function onDeviceReady() {
     initDzien();
     initP();
 
-    zaladujPlan('./scripts/plan/o6.html');
+    zaladujPlan(cordova.file.dataDirectory + `plan/o6.html`);
     
 
 };

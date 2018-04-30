@@ -60,7 +60,5 @@
     <preference name="xwalkMultipleApk" value="false" />
     <plugin name="net.ekuwang.cordova.plugin.statusbar" spec="~1.0.0" />
     <plugin name="cordova-plugin-file-downloader" spec="^0.3.2" />
-    <engine name="ios" spec="4.2.0" />
-    <engine name="windows" spec="4.4.2" />
     <engine name="android" spec="7.0.0" />
 </widget>

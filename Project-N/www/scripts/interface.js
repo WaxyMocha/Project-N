@@ -137,6 +137,6 @@ let dzienMenu = function (day) {
 }
 
 let planCh = function (plan) {
-    zaladujPlan(`./scripts/plan/o${plan}.html`);
+    zaladujPlan(cordova.file.dataDirectory + `plan/o${plan}.html`);
     p.innerHTML = plan;
 }
