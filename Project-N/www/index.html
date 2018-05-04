@@ -25,11 +25,11 @@
       <a class="dropdown-trigger btn-flat waves-effect btn-large" id="plan1" href="#" data-target="plan1c">6</a><br>
 
       <ul id="dzien1" class="tabs">
-        <li class="tab col s2"><a class="waves-effect" href="javascript:dzienMenu(0)">Poniedziałek</a></li>
-        <li class="tab col s2"><a class="waves-effect" href="javascript:dzienMenu(1)">Wtorek</a></li>
-        <li class="tab col s2"><a class="waves-effect" href="javascript:dzienMenu(2)">Środa</a></li>
-        <li class="tab col s2"><a class="waves-effect" href="javascript:dzienMenu(3)">Czwartek</a></li>
-        <li class="tab col s2"><a class="waves-effect" href="javascript:dzienMenu(4)">Piątek</a></li>
+        <li class="tab col"><a href="#d0">Poniedziałek</a></li>
+        <li class="tab col"><a href="#d1">Wtorek</a></li>
+        <li class="tab col"><a href="#d2">Środa</a></li>
+        <li class="tab col"><a href="#d3">Czwartek</a></li>
+        <li class="tab col"><a href="#d4">Piątek</a></li>
       </ul>
 
       <ul id="plan1c" class="dropdown-content">
@@ -65,9 +65,13 @@
       </ul>
     </menu>
     <main id="wrapper">
-      <ul id="plan" class="collapsible">
-
-      </ul>
+      <section id="plan" class="row">
+        <ul id="d0" class="col s12 collapsible"></ul>
+        <ul id="d1" class="col s12 collapsible"></ul>
+        <ul id="d2" class="col s12 collapsible"></ul>
+        <ul id="d3" class="col s12 collapsible"></ul>
+        <ul id="d4" class="col s12 collapsible"></ul>
+      </section>
     </main>
   </div>
   <script type="text/javascript" src="cordova.js" async></script>

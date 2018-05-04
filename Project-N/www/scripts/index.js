@@ -18,7 +18,7 @@ function onDeviceReady() {
   initP();
 
   zaladujPlan('./scripts/plan/o6.html');
-  // initDzien();
+  //initDzien(); // tu się buguje, genPlan();
 
 };
 
