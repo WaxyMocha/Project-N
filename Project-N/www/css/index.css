@@ -9,12 +9,13 @@
     height: 100vh;
     max-height: 100vh;
     margin: 0;
+    overflow: hidden;
 }
 
 .nav-wrapper {
     background-color: rgb(20, 155, 7);
     padding-top: 23px;
-    height: 80px;
+    height: calc(80px + 48px);
     border-top: 1px;
 }
 
@@ -41,7 +42,8 @@ menu {
 
 #wrapper {
     width: 100%;
-    height: calc(100vh - 80px);
+    height: calc(100vh - 128px);
+    overflow-y: auto;
 }
 
 #plan {
@@ -67,4 +69,25 @@ menu {
 
 .clockP * {
     vertical-align: middle;
+}
+
+#dzien1 {
+  background-color: var(--main-color);
+  color: white;
+}
+
+#dzien1::-webkit-scrollbar {
+    display: none;
+}
+
+#dzien1 * {
+  color: white;
+}
+
+#dzien1 .active {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+#dzien1 .indicator {
+  background-color: white;
 }

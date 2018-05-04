@@ -1,3 +1,4 @@
+// jscs:disable maximumLineLength
 // Aby obejrzeć wprowadzenie do pustego szablonu, zobacz następującą dokumentację:
 // http://go.microsoft.com/fwlink/?LinkID=397704
 // Aby debugować kod ładowania strony w narzędziu cordova-simulate, na urządzeniach z systemem Android lub w emulatorach systemu Android: uruchom aplikację, ustaw punkty przerwania,
@@ -9,15 +10,15 @@ function onDeviceReady() {
   // Obsługa zdarzeń wstrzymywania i wznawiania działania oprogramowania Cordova
   document.addEventListener('pause', onPause.bind(this), false);
   document.addEventListener('resume', onResume.bind(this), false);
-  // statusbarTransparent.enable();
   navigator.splashscreen.hide();
+
   //window.plugins.headerColor.tint("#149b07"); //kolor w widoku otwartych apek
   //zainicjuj panel nawigacyjny (menu z lewej)
   initNav();
-  initDzien();
   initP();
 
   zaladujPlan('./scripts/plan/o6.html');
+  // initDzien();
 
 };
 
