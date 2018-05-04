@@ -160,7 +160,7 @@ let dzienMenu = function (day) {
     'Piątek',
     '',
   ];
-  dzien.innerHTML = d[day + 1];
+  // dzien.innerHTML = d[day + 1];
 };
 
 let planCh = function (plan) {
