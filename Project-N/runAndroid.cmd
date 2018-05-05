@@ -1,11 +1,11 @@
 @echo off
 
 IF "%~1"=="/h" (
-  call :HELP
+  goto HELP
 )
 
 IF "%~1"=="" (
-  call :HELP
+  goto HELP
 )
 
 IF "%~1"=="arm64" (
@@ -34,12 +34,14 @@ IF "%~1"=="x86_64" (
 )
 
 :HELP
+echo.
 echo "Usage: %~nx0 <architecture>"
 echo.
 echo "Example: %~nx0 arm64"
 echo.
 echo.
 echo "Available architectures: arm64, armeabi, armv7, x86, x86_64"
+echo.
 exit /B
 
 
