@@ -1,11 +1,11 @@
 @echo off
 
 IF "%~1"=="/h" (
-  call :HELP
+  goto HELP
 )
 
 IF "%~1"=="" (
-  call :HELP
+  goto HELP
 )
 
 IF "%~1"=="arm64" (
