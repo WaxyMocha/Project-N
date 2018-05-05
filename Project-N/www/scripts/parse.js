@@ -17,11 +17,7 @@ function zaladujPlan(url) {
 let plan;
 
 function parsujPlan() {
-    const iframe = document.getElementById('tPlan');
-    //var iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-    //if (iframeDoc.readyState != 'complete') {
-     //   console.error("Couldn't load plan");
-   // }
+  const iframe = document.getElementById('tPlan');
   let tabela = iframe.contentWindow.document.querySelector('.tabela'); //wczytanie tabelki z ramki
   let arr = [];
 
@@ -60,16 +56,18 @@ function parsujPlan() {
   arr = tempArr;
   plan = arr;
   iframe.parentNode.removeChild(iframe); //usunięcie ramki
-    //pokaż odpowiedni dzień tygodnia
+
+  //pokaż odpowiedni dzień tygodnia
   let data = new Date();
   if (data.getDay() >= 1 && data.getDay() <= 5) {
-      if (data.getHours() < 15) {
-          dzienMenu(data.getDay() - 1);
-      } else {
-          dzienMenu(data.getDay());
-      }
+    if (data.getHours() < 15) {
+      dzienMenu(data.getDay() - 1);
+    } else {
+      dzienMenu(data.getDay());
+    }
   } else {
-      dzienMenu(0);
+    dzienMenu(0);
   }
+
   return arr;
 }
