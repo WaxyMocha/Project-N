@@ -16,7 +16,7 @@ let initP = function () {
 
 let initDzien = function () {
   dzien = document.getElementById('dzien1');
-  dzienInstance = M.Tabs.init(dzien, { swipeable: true, });;
+  dzienInstance = M.Tabs.init(dzien, { swipeable: true, });
 };
 
 let initNav = function () {
@@ -28,10 +28,15 @@ let initNav = function () {
   });
 };
 
-let pokazPlan = function (dzien) {
-  let uPlan = document.getElementById('plan');
-  planInstance = M.Collapsible.init(uPlan);
-  uPlan.innerHTML = '';
+let pokazPlan = function (dzien, element) {
+  if (element == undefined) {
+    element = document.getElementById('plan');
+    genPlan();
+    return;
+  }
+
+  planInstance = M.Collapsible.init(element);
+  element.innerHTML = '';
   for (let i = 1; i < plan[dzien + 2].length; i++) {
     let temp = $.parseHTML(plan[dzien + 2][i]);
     let li = document.createElement('li');
@@ -130,14 +135,28 @@ let pokazPlan = function (dzien) {
 
     li.appendChild(cHead);
     li.appendChild(cBody);
-    uPlan.appendChild(li);
+    element.appendChild(li);
   }
+};
+
+let genPlan = function () {
+  pokazPlan(0, document.getElementById('d0'));
+  pokazPlan(1, document.getElementById('d1'));
+  pokazPlan(2, document.getElementById('d2'));
+  pokazPlan(3, document.getElementById('d3'));
+  pokazPlan(4, document.getElementById('d4'));
+  setTimeout(initDzien, 100);
+  setTimeout(function () {
+    document.getElementById('plan').children[0].style.height = 'calc(100vh - 128px)';
+    document.getElementById('plan').children[0].style.overflowY = 'auto';
+  }, 100);
 };
 
 let dzienMenu = function (day) {
   pokazPlan(day);
   let d = ['', 'Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', ''];
-  dzien.innerHTML = d[day + 1];
+
+  //dzien.innerHTML = d[day + 1];
 };
 
 let planCh = function (plan) {

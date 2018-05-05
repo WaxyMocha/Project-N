@@ -47,10 +47,10 @@ exit /B
 :RUN
 echo.
 echo "==COMPILING APKS=="
-powershell "cordova compile android"
+powershell "cordova build android"
 echo.
 echo "==INSTALLING APK=="
-powershell "adb install .\platforms\android\app\build\outputs\apk\%arch%\debug\app-%arch%-debug.apk"
+powershell "adb install -r .\platforms\android\app\build\outputs\apk\%arch%\debug\app-%arch%-debug.apk"
 echo.
 echo "==LAUNCHING APK=="
 powershell "adb shell am start -n io.project.n/io.project.n.MainActivity"

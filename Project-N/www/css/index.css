@@ -56,6 +56,7 @@ menu {
 
 .collapsible {
   box-shadow: 0 0 0 0 transparent;
+  height: calc(100vh - 128px - 7px - 15px)
 }
 
 .drag-target {
