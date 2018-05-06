@@ -8,6 +8,7 @@ let dzien;
 let dzienInstance;
 let p;
 let pInstance;
+let d = 0;
 
 let initP = function () {
   p = document.getElementById('plan1');
@@ -17,6 +18,7 @@ let initP = function () {
 let initDzien = function () {
   dzien = document.getElementById('dzien1');
   dzienInstance = M.Tabs.init(dzien, { swipeable: true, });
+  dzienInstance.select('d' + d);
 };
 
 let initNav = function () {
@@ -187,4 +189,21 @@ let dzienMenu = function (day) {
 let planCh = function (plan) {
   zaladujPlan(`./scripts/plan/o${plan}.html`);
   p.innerHTML = plan;
+};
+
+let showDzien = function () {
+  let data = new Date();
+  if (data.getDay() >= 1 && data.getDay() <= 5) {
+    if (data.getHours() < 15) {
+      d = data.getDay() - 1;
+    } else if (data.getHours() >= 15 && data.getDay() == 5) {
+      d = 0;
+    } else {
+      d = data.getDay();
+    }
+  } else {
+    d = 0;
+  }
+
+  genPlan();
 };

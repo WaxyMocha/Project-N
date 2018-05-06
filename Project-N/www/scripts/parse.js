@@ -60,16 +60,6 @@ function parsujPlan() {
   iframe.parentNode.removeChild(iframe); //usunięcie ramki
 
   //pokaż odpowiedni dzień tygodnia
-  let data = new Date();
-  if (data.getDay() >= 1 && data.getDay() <= 5) {
-    if (data.getHours() < 15) {
-      dzienMenu(data.getDay() - 1);
-    } else {
-      dzienMenu(data.getDay());
-    }
-  } else {
-    dzienMenu(0);
-  }
-
+  showDzien();
   return arr;
 }
