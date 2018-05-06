@@ -15,10 +15,12 @@ function zaladujPlan(url) {
 }
 
 let plan;
+let klasa;
 
 function parsujPlan() {
   const iframe = document.getElementById('tPlan');
   let tabela = iframe.contentWindow.document.querySelector('.tabela'); //wczytanie tabelki z ramki
+  klasa = iframe.contentWindow.document.querySelector('.tytulnapis').innerHTML;
   let arr = [];
 
   let rows = tabela.children[0].children; //pobranie wierszy tabelki

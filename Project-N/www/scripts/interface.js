@@ -44,6 +44,7 @@ let pokazPlan = function (dzien, element) {
     let cBody = document.createElement('div');
     let sp = document.createElement('span');
     cHead.innerHTML = plan[0][i] + '. ';
+    console.log(temp);
     if (temp.length == 0) { //okienko
       continue;
     } else if (temp.length == 4 || temp.length == 3) { //lekcje dzielone grupami
@@ -59,7 +60,7 @@ let pokazPlan = function (dzien, element) {
       };
       cHead.innerHTML += `Grupa 1: ${gr1.lek}. Grupa 2: ${gr2.lek}`;
       sp.innerHTML = `Nauczyciel: ${gr1.nau}/${gr2.nau}<br>Gabinet: ${gr1.gab}/${gr2.gab}`;
-    } else if (temp.length == 2 || (temp.length == 1 && temp.children)) { //okienko jednej z grup
+    } else if (temp.length == 2 || (temp.length == 1 && (temp.children || temp[0].children))) { //okienko jednej z grup
       if (temp[0].children[0].innerHTML.search('-1/2') != -1) { //jeśli grupa 1
         let gr1 = {
           lek: temp[0].children[0].innerHTML.replace('-1/2', ''),
@@ -78,7 +79,12 @@ let pokazPlan = function (dzien, element) {
         cHead.innerHTML += `Grupa 1: Wolne. Grupa 2: ${gr2.lek}`;
         sp.innerHTML = `Nauczyciel: --/${gr2.nau}<br>Gabinet: --/${gr2.gab}`;
       }
-    } else if (temp.length == 5) { //lekcja całą klasą
+    } else if (temp.length == 5 && (temp[1].textContent == '-1/2 ' || temp[1].textContent == '-2/2 ')) {
+      if (temp[1].textContent == '-1/2 ') {
+        cHead.innerHTML += `Grupa 1: ${temp[0].innerHTML}. Grupa 2: Wolne`;
+        sp.innerHTML = `Nauczyciel: ${temp[2].innerHTML}/--<br>Gabinet: ${temp[4].innerHTML}/--`;
+      }
+    } else if (temp.length == 5 && (temp[1].textContent != '-1/2 ' || temp[1].textContent != '-2/2 ')) { //lekcja całą klasą
       let kl = {
         lek: temp[0].innerHTML,
         nau: temp[2].innerHTML,
@@ -86,18 +92,36 @@ let pokazPlan = function (dzien, element) {
       };
       cHead.innerHTML += `${kl.lek}`;
       sp.innerHTML = `Nauczyciel: ${kl.nau}<br>Gabinet: ${kl.gab}`;
-    } else if (temp.length == 1 && !temp.children) { //lekcja całą klasą
-      let kl = {
-        lek: temp[0].textContent,
-        nau: '--',
-        gab: '--',
-      };
+    } else if (temp.length == 1 && (!temp.children || !temp[0].children)) { //lekcja całą klasą
+      let kl = {};
+      if (/\d/.test(temp[0].textContent) == false) {
+        kl = {
+          lek: temp[0].textContent,
+          nau: '--',
+          gab: '--',
+        };
+      } else if (/\d/.test(temp[0].textContent)) {
+        let s = temp[0].textContent;
+        let l = s.length;
+        if (!isNaN(Number(s[l - 3]))) {
+          kl.gab = s.slice(l - 3);
+          s = s.slice(0, l - 4);
+        } else {
+          kl.gab = s.slice(l - 2);
+          s = s.slice(0, l - 3);
+        }
+
+        l = s.length;
+        kl.nau = s.slice(s.lastIndexOf(' ') + 1);
+        kl.lek = s.slice(0, s.lastIndexOf(' '));
+      }
+
       cHead.innerHTML += `${kl.lek}`;
       sp.innerHTML = `Nauczyciel: ${kl.nau}<br>Gabinet: ${kl.gab}`;
     } else if (temp.length == 7) { //wf... cause... fuck you
       let gr1;
       let gr2;
-      if (temp[0].children) {
+      if (temp[0].children && temp[0].children.length != 0) {
         gr1 = {
           lek: temp[0].children[0].innerHTML.replace('-1/2', ''),
           nau: temp[0].children[1].innerHTML,
@@ -108,7 +132,7 @@ let pokazPlan = function (dzien, element) {
           nau: temp[4].innerHTML,
           gab: temp[6].innerHTML,
         };
-      } else {
+      } else if (temp[6].children && temp[6].children.length != 0) {
         gr1 = {
           lek: temp[0].innerHTML,
           nau: temp[2].innerHTML,
@@ -116,9 +140,9 @@ let pokazPlan = function (dzien, element) {
 
         };
         gr2 = {
-          lek: temp[0].children[0].innerHTML.replace('-2/2', ''),
-          nau: temp[0].children[1].innerHTML,
-          gab: temp[0].children[2].innerHTML,
+          lek: temp[6].children[0].innerHTML.replace('-2/2', ''),
+          nau: temp[6].children[1].innerHTML,
+          gab: temp[6].children[2].innerHTML,
         };
       }
 
@@ -140,6 +164,7 @@ let pokazPlan = function (dzien, element) {
 };
 
 let genPlan = function () {
+  document.getElementById('klasa').innerHTML = klasa;
   pokazPlan(0, document.getElementById('d0'));
   pokazPlan(1, document.getElementById('d1'));
   pokazPlan(2, document.getElementById('d2'));

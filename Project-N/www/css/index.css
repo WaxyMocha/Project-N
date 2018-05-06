@@ -96,3 +96,11 @@ menu {
   height: 100%;
   overflow-y: auto;
 }
+
+#klasa {
+  color: white;
+}
+
+#klasa:active {
+  background-color: transparent;
+}
