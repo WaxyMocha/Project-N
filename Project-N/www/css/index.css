@@ -9,12 +9,13 @@
     height: 100vh;
     max-height: 100vh;
     margin: 0;
+    overflow: hidden;
 }
 
 .nav-wrapper {
     background-color: rgb(20, 155, 7);
     padding-top: 23px;
-    height: 80px;
+    height: 128px;
     border-top: 1px;
 }
 
@@ -41,7 +42,8 @@ menu {
 
 #wrapper {
     width: 100%;
-    height: calc(100vh - 80px);
+    height: calc(100vh - 128px);
+    overflow-y: auto;
 }
 
 #plan {
@@ -52,13 +54,13 @@ menu {
     border: 0 none;
 }
 
-.drag-target {
-    width: 15px;
+.collapsible {
+  box-shadow: 0 0 0 0 transparent;
+  height: calc(100vh - 128px - 7px - 15px)
 }
 
-#dzien1 {
-    color: white;
-    min-width: 163px;
+.drag-target {
+    width: 15px;
 }
 
 #plan1 {
@@ -67,4 +69,38 @@ menu {
 
 .clockP * {
     vertical-align: middle;
+}
+
+#dzien1 {
+  background-color: rgb(20, 155, 7);
+  color: white;
+}
+
+#dzien1::-webkit-scrollbar {
+    display: none;
+}
+
+#dzien1 * {
+  color: white;
+}
+
+#dzien1 .active {
+  background-color: rgba(255, 255, 255, 0);
+}
+
+#dzien1 .indicator {
+  background-color: white;
+}
+
+#plan.tabs-content {
+  height: 100%;
+  overflow-y: auto;
+}
+
+#klasa {
+  color: white;
+}
+
+#klasa:active {
+  background-color: transparent;
 }

@@ -15,14 +15,12 @@ function zaladujPlan(url) {
 }
 
 let plan;
+let klasa;
 
 function parsujPlan() {
-    const iframe = document.getElementById('tPlan');
-    //var iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-    //if (iframeDoc.readyState != 'complete') {
-     //   console.error("Couldn't load plan");
-   // }
+  const iframe = document.getElementById('tPlan');
   let tabela = iframe.contentWindow.document.querySelector('.tabela'); //wczytanie tabelki z ramki
+  klasa = iframe.contentWindow.document.querySelector('.tytulnapis').innerHTML;
   let arr = [];
 
   let rows = tabela.children[0].children; //pobranie wierszy tabelki
@@ -60,16 +58,8 @@ function parsujPlan() {
   arr = tempArr;
   plan = arr;
   iframe.parentNode.removeChild(iframe); //usunięcie ramki
-    //pokaż odpowiedni dzień tygodnia
-  let data = new Date();
-  if (data.getDay() >= 1 && data.getDay() <= 5) {
-      if (data.getHours() < 15) {
-          dzienMenu(data.getDay() - 1);
-      } else {
-          dzienMenu(data.getDay());
-      }
-  } else {
-      dzienMenu(0);
-  }
+
+  //pokaż odpowiedni dzień tygodnia
+  showDzien();
   return arr;
 }
