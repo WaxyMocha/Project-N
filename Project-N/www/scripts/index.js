@@ -17,7 +17,7 @@ function onDeviceReady() {
   initNav();
   initP();
 
-  zaladujPlan('./scripts/plan/o2.html');
+  zaladujPlan(`./scripts/plan/o${config.defaultClass}.html`);
 
   //initDzien(); // tu się buguje, przeniesiono do genPlan();
 
