@@ -1,4 +1,5 @@
-﻿let nav;
+// jscs:disable maximumLineLength
+let nav;
 let navInstance;
 let menuBtn;
 let mainWrapper = document.getElementById('wrapper');
@@ -7,136 +8,204 @@ let dzien;
 let dzienInstance;
 let p;
 let pInstance;
-
+let d = 0; //dzień tygodnia
 
 let initP = function () {
-    p = document.getElementById('plan1');
-    pInstance = M.Dropdown.init(p);
-}
+  p = document.getElementById('plan1');
+  p.innerHTML = config.klasa;
+  pInstance = M.Dropdown.init(p);
+};
 
 let initDzien = function () {
-    dzien = document.getElementById('dzien1');
-    dzienInstance = M.Dropdown.init(dzien);
-}
-
+  dzien = document.getElementById('dzien1');
+  dzienInstance = M.Tabs.init(dzien, { swipeable: true, });
+  dzienInstance.select('d' + d);
+};
 
 let initNav = function () {
-    nav = document.querySelector('.sidenav');
-    navInstance = M.Sidenav.init(nav);
-    menuBtn = document.getElementById('menu-btn');
-    menuBtn.addEventListener('click', function () { navInstance.open() });
-}
+  nav = document.querySelector('.sidenav');
+  navInstance = M.Sidenav.init(nav);
+  menuBtn = document.getElementById('menu-btn');
+  menuBtn.addEventListener('click', function () {
+    navInstance.open();
+  });
+};
 
-let pokazPlan = function (dzien) {
-    //"<span style="font-size:85%"><span class="p">admin.syst.-1/2</span> <span class="n">DF</span> <span class="s">03</span></span><br><span style="font-size:85%"><span class="p">aplik.-2/2</span> <span class="n">SO</span> <span class="s">04</span></span>"
-    let uPlan = document.getElementById('plan');
-    planInstance = M.Collapsible.init(uPlan);
-    uPlan.innerHTML = '';
-    for (let i = 1; i < plan[dzien + 2].length; i++) {
-        let temp = $.parseHTML(plan[dzien + 2][i]);
-        let li = document.createElement('li');
-        let cHead = document.createElement('div');
-        let cBody = document.createElement('div');
-        let sp = document.createElement('span');
-        cHead.innerHTML = plan[0][i] + '. ';
-        if (temp.length == 0) { //okienko
-            continue;
-        } else if (temp.length == 4 || temp.length == 3) { //lekcje dzielone grupami
-            let gr1 = {
-                lek: temp[0].children[0].innerHTML.replace('-1/2', ''),
-                nau: temp[0].children[1].innerHTML,
-                gab: temp[0].children[2].innerHTML,
-            };
-            let gr2 = {
-                lek: temp[2].children[0].innerHTML.replace('-2/2', ''),
-                nau: temp[2].children[1].innerHTML,
-                gab: temp[2].children[2].innerHTML,
-            };
-            cHead.innerHTML += `Grupa 1: ${gr1.lek}. Grupa 2: ${gr2.lek}`;
-            sp.innerHTML = `Nauczyciel: ${gr1.nau}/${gr2.nau}<br>Gabinet: ${gr1.gab}/${gr2.gab}`;
-        } else if (temp.length == 2 || (temp.length == 1 && temp.children)) { //okienko jednej z grup
-            if (temp[0].children[0].innerHTML.search('-1/2') != -1) { //jeśli grupa 1
-                let gr1 = {
-                    lek: temp[0].children[0].innerHTML.replace('-1/2', ''),
-                    nau: temp[0].children[1].innerHTML,
-                    gab: temp[0].children[2].innerHTML,
-                };
-                cHead.innerHTML += `Grupa 1: ${gr1.lek}. Grupa 2: Wolne`;
-                sp.innerHTML = `Nauczyciel: ${gr1.nau}/--<br>Gabinet: ${gr1.gab}/--`;
- 
-            } else if (temp[0].children[0].innerHTML.search('-2/2') != -1) { //jeśli grupa 2
-                let gr2 = {
-                    lek: temp[0].children[0].innerHTML.replace('-2/2', ''),
-                    nau: temp[0].children[1].innerHTML,
-                    gab: temp[0].children[2].innerHTML,
-                };
-                cHead.innerHTML += `Grupa 1: Wolne. Grupa 2: ${gr2.lek}`;
-                sp.innerHTML = `Nauczyciel: --/${gr2.nau}<br>Gabinet: --/${gr2.gab}`;
-            }
-        } else if (temp.length == 5) { //lekcja całą klasą
-            let kl = {
-                lek: temp[0].innerHTML,
-                nau: temp[2].innerHTML,
-                gab: temp[4].innerHTML,
-            }
-            cHead.innerHTML += `${kl.lek}`;
-            sp.innerHTML = `Nauczyciel: ${kl.nau}<br>Gabinet: ${kl.gab}`;
-        } else if (temp.length == 1 && !temp.children) { //lekcja całą klasą
-            let kl = {
-                lek: temp[0].textContent,
-                nau: '--',
-                gab: '--',
-            }
-            cHead.innerHTML += `${kl.lek}`;
-            sp.innerHTML = `Nauczyciel: ${kl.nau}<br>Gabinet: ${kl.gab}`;
-        } else if (temp.length == 7) { //wf... cause... fuck you
-            let gr1, gr2;
-            if (temp[0].children) {
-                gr1 = {
-                    lek: temp[0].children[0].innerHTML.replace('-1/2', ''),
-                    nau: temp[0].children[1].innerHTML,
-                    gab: temp[0].children[2].innerHTML,
-                };
-                gr2 = {
-                    lek: temp[2].innerHTML,
-                    nau: temp[4].innerHTML,
-                    gab: temp[6].innerHTML,
-                };
-            } else {
-                gr1 = {
-                    lek: temp[0].innerHTML,
-                    nau: temp[2].innerHTML,
-                    gab: temp[4].innerHTML,
-                    
-                };
-                gr2 = {
-                    lek: temp[0].children[0].innerHTML.replace('-2/2', ''),
-                    nau: temp[0].children[1].innerHTML,
-                    gab: temp[0].children[2].innerHTML,
-                };
-            }
-            cHead.innerHTML += `Grupa 1: ${gr1.lek}. Grupa 2: ${gr2.lek}`;
-            sp.innerHTML = `Nauczyciel: ${gr1.nau}/${gr2.nau}<br>Gabinet: ${gr1.gab}/${gr2.gab}`;
+let pokazPlan = function (dzien, element) {
+  if (element == undefined) {
+    element = document.getElementById('plan');
+    genPlan();
+    return;
+  }
+
+  planInstance = M.Collapsible.init(element);
+  element.innerHTML = '';
+  for (let i = 1; i < plan[dzien + 2].length; i++) {
+    let temp = $.parseHTML(plan[dzien + 2][i]);
+    let li = document.createElement('li');
+    let cHead = document.createElement('div');
+    let cBody = document.createElement('div');
+    let sp = document.createElement('span');
+    cHead.innerHTML = plan[0][i] + '. ';
+    console.log(temp);
+    if (temp.length == 0) { //okienko
+      continue;
+    } else if (temp.length == 4 || temp.length == 3) { //lekcje dzielone grupami
+      let gr1 = {
+        lek: temp[0].children[0].innerHTML.replace('-1/2', ''),
+        nau: temp[0].children[1].innerHTML,
+        gab: temp[0].children[2].innerHTML,
+      };
+      let gr2 = {
+        lek: temp[2].children[0].innerHTML.replace('-2/2', ''),
+        nau: temp[2].children[1].innerHTML,
+        gab: temp[2].children[2].innerHTML,
+      };
+      cHead.innerHTML += `Grupa 1: ${gr1.lek}. Grupa 2: ${gr2.lek}`;
+      sp.innerHTML = `Nauczyciel: ${gr1.nau}/${gr2.nau}<br>Gabinet: ${gr1.gab}/${gr2.gab}`;
+    } else if (temp.length == 2 || (temp.length == 1 && (temp.children || temp[0].children))) { //okienko jednej z grup
+      if (temp[0].children[0].innerHTML.search('-1/2') != -1) { //jeśli grupa 1
+        let gr1 = {
+          lek: temp[0].children[0].innerHTML.replace('-1/2', ''),
+          nau: temp[0].children[1].innerHTML,
+          gab: temp[0].children[2].innerHTML,
+        };
+        cHead.innerHTML += `Grupa 1: ${gr1.lek}. Grupa 2: Wolne`;
+        sp.innerHTML = `Nauczyciel: ${gr1.nau}/--<br>Gabinet: ${gr1.gab}/--`;
+
+      } else if (temp[0].children[0].innerHTML.search('-2/2') != -1) { //jeśli grupa 2
+        let gr2 = {
+          lek: temp[0].children[0].innerHTML.replace('-2/2', ''),
+          nau: temp[0].children[1].innerHTML,
+          gab: temp[0].children[2].innerHTML,
+        };
+        cHead.innerHTML += `Grupa 1: Wolne. Grupa 2: ${gr2.lek}`;
+        sp.innerHTML = `Nauczyciel: --/${gr2.nau}<br>Gabinet: --/${gr2.gab}`;
+      }
+    } else if (temp.length == 5 && (temp[1].textContent == '-1/2 ' || temp[1].textContent == '-2/2 ')) {
+      if (temp[1].textContent == '-1/2 ') {
+        cHead.innerHTML += `Grupa 1: ${temp[0].innerHTML}. Grupa 2: Wolne`;
+        sp.innerHTML = `Nauczyciel: ${temp[2].innerHTML}/--<br>Gabinet: ${temp[4].innerHTML}/--`;
+      }
+    } else if (temp.length == 5 && (temp[1].textContent != '-1/2 ' || temp[1].textContent != '-2/2 ')) { //lekcja całą klasą
+      let kl = {
+        lek: temp[0].innerHTML,
+        nau: temp[2].innerHTML,
+        gab: temp[4].innerHTML,
+      };
+      cHead.innerHTML += `${kl.lek}`;
+      sp.innerHTML = `Nauczyciel: ${kl.nau}<br>Gabinet: ${kl.gab}`;
+    } else if (temp.length == 1 && (!temp.children || !temp[0].children)) { //lekcja całą klasą
+      let kl = {};
+      if (/\d/.test(temp[0].textContent) == false) {
+        kl = {
+          lek: temp[0].textContent,
+          nau: '--',
+          gab: '--',
+        };
+      } else if (/\d/.test(temp[0].textContent)) {
+        let s = temp[0].textContent;
+        let l = s.length;
+        if (!isNaN(Number(s[l - 3]))) {
+          kl.gab = s.slice(l - 3);
+          s = s.slice(0, l - 4);
+        } else {
+          kl.gab = s.slice(l - 2);
+          s = s.slice(0, l - 3);
         }
-        sp.innerHTML += `<br><span class="clockP"><i class="material-icons">access_time</i> ${plan[1][i]}</span>`;
-       // console.log(temp);
-        cHead.classList.add('collapsible-header');
-        cBody.appendChild(sp);
-        cBody.classList.add('collapsible-body');
 
-        li.appendChild(cHead);
-        li.appendChild(cBody);
-        uPlan.appendChild(li);
+        l = s.length;
+        kl.nau = s.slice(s.lastIndexOf(' ') + 1);
+        kl.lek = s.slice(0, s.lastIndexOf(' '));
+      }
+
+      cHead.innerHTML += `${kl.lek}`;
+      sp.innerHTML = `Nauczyciel: ${kl.nau}<br>Gabinet: ${kl.gab}`;
+    } else if (temp.length == 7) { //wf... cause... fuck you
+      let gr1;
+      let gr2;
+      if (temp[0].children && temp[0].children.length != 0) {
+        gr1 = {
+          lek: temp[0].children[0].innerHTML.replace('-1/2', ''),
+          nau: temp[0].children[1].innerHTML,
+          gab: temp[0].children[2].innerHTML,
+        };
+        gr2 = {
+          lek: temp[2].innerHTML,
+          nau: temp[4].innerHTML,
+          gab: temp[6].innerHTML,
+        };
+      } else if (temp[6].children && temp[6].children.length != 0) {
+        gr1 = {
+          lek: temp[0].innerHTML,
+          nau: temp[2].innerHTML,
+          gab: temp[4].innerHTML,
+
+        };
+        gr2 = {
+          lek: temp[6].children[0].innerHTML.replace('-2/2', ''),
+          nau: temp[6].children[1].innerHTML,
+          gab: temp[6].children[2].innerHTML,
+        };
+      }
+
+      cHead.innerHTML += `Grupa 1: ${gr1.lek}. Grupa 2: ${gr2.lek}`;
+      sp.innerHTML = `Nauczyciel: ${gr1.nau}/${gr2.nau}<br>Gabinet: ${gr1.gab}/${gr2.gab}`;
     }
-}
+
+    sp.innerHTML += `<br><span class="clockP"><i class="material-icons">access_time</i> ${plan[1][i]}</span>`;
+
+    // console.log(temp);
+    cHead.classList.add('collapsible-header');
+    cBody.appendChild(sp);
+    cBody.classList.add('collapsible-body');
+
+    li.appendChild(cHead);
+    li.appendChild(cBody);
+    element.appendChild(li);
+  }
+};
+
+let genPlan = function () {
+  document.getElementById('klasa').innerHTML = klasa;
+  pokazPlan(0, document.getElementById('d0'));
+  pokazPlan(1, document.getElementById('d1'));
+  pokazPlan(2, document.getElementById('d2'));
+  pokazPlan(3, document.getElementById('d3'));
+  pokazPlan(4, document.getElementById('d4'));
+  setTimeout(initDzien, 100);
+  setTimeout(function () {
+    document.getElementById('plan').children[0].style.height = 'calc(100vh - 128px)';
+    document.getElementById('plan').children[0].style.overflowY = 'auto';
+  }, 100);
+};
 
 let dzienMenu = function (day) {
-    pokazPlan(day);
-    let d = ['', 'Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', ''];
-    dzien.innerHTML = d[day + 1];
-}
+  pokazPlan(day);
+  let d = ['', 'Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', ''];
+
+  //dzien.innerHTML = d[day + 1];
+};
 
 let planCh = function (plan) {
     zaladujPlan(cordova.file.dataDirectory + `plan/o${plan}.html`);
-    p.innerHTML = plan;
-}
+
+let showDzien = function () {
+  let data = new Date();
+  if (data.getDay() >= 1 && data.getDay() <= 5) {
+    if (data.getHours() < 15) {
+      d = data.getDay() - 1;
+    } else if (data.getHours() >= 15 && data.getDay() == 5) {
+      d = 0;
+    } else {
+      d = data.getDay();
+    }
+  } else {
+    d = 0;
+  }
+
+  genPlan();
+};
+
+  p.innerHTML = plan;
+};
