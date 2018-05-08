@@ -45,7 +45,7 @@ menu {
     height: 128px;
 }
 
-#wrapper {
+.wrapper {
     width: 100%;
     height: calc(100vh - 128px);
     overflow-y: auto;
