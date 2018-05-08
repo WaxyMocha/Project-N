@@ -208,3 +208,28 @@ let showDzien = function () {
 
   genPlan();
 };
+
+let closePrefs = function () {
+  let prefs = document.getElementById('preferences');
+  navInstance.close();
+  prefs.style.opacity = '';
+  prefs.style.pointerEvents = '';
+  prefs.style.top = '';
+};
+
+let showPrefs = function () {
+  navInstance.close();
+  let prefs = document.getElementById('preferences');
+  prefs.style.opacity = '1';
+  prefs.style.pointerEvents = 'all';
+  prefs.style.top = '0';
+};
+
+let togglePrefs = function () {
+  let prefs = document.getElementById('preferences');
+  if (prefs.style.opacity = '1') {
+    showPrefs();
+  } else {
+    closePrefs();
+  }
+};

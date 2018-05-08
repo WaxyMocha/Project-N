@@ -17,9 +17,14 @@
     padding-top: 23px;
     height: 128px;
     border-top: 1px;
+    z-index: 16;
 }
 
-#menu-btn {
+.small-navbar {
+  height: 80px;
+}
+
+.nav-button {
     width: 56px;
     height: 56px;
     margin: 0;
@@ -27,7 +32,7 @@
     color: white;
 }
 
-#menu-btn:focus {
+.nav-button:focus {
     background-color: transparent;
 }
 
@@ -103,4 +108,16 @@ menu {
 
 #klasa:active {
   background-color: transparent;
+}
+
+#preferences {
+  position: fixed;
+  top: 128px;
+  left: 0;
+  background-color: white;
+  z-index: 30;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s, top 0.2s;
+  transition-delay: 0.1s, 0;
 }

@@ -17,9 +17,9 @@
 </head>
 
 <body>
-  <div class="app">
+  <div id="mainActivity" class="app">
     <nav id="appBar" class="nav-wrapper navbar-fixed elevation-4">
-      <button id="menu-btn" class="waves-effect btn-flat"><i class="material-icons">menu</i></button>
+      <button id="menu-btn" class="waves-effect btn-flat nav-button"><i class="material-icons">menu</i></button>
       <!-- <a class="dropdown-trigger btn-flat waves-effect btn-large" id="dzien1" href="#" data-target="dzien1c">Poniedziałek</a> -->
       <a class="btn-flat waves-effect btn-large" id="klasa" href="#"></a>
       <a class="dropdown-trigger btn-flat waves-effect btn-large" id="plan1" href="#" data-target="plan1c">2</a><br>
@@ -53,17 +53,7 @@
       </ul>
 
     </nav>
-    <menu class="nav">
-      <ul id="slide-out" class="sidenav">
-        <li>
-          <div class="user-view">
 
-          </div>
-        </li>
-        <li><a class="waves-effect" href="#!"><i class="material-icons">date_range</i>Plan lekcji</a></li>
-        <li><a class="waves-effect" href="#!"><i class="material-icons">settings</i>Ustawienia</a></li>
-      </ul>
-    </menu>
     <main id="wrapper">
       <section id="plan" class="row">
         <ul id="d0" class="col s12 collapsible"></ul>
@@ -74,6 +64,25 @@
       </section>
     </main>
   </div>
+
+  <div class="app" id="preferences">
+    <nav class="nav-wrapper navbar-fixed elevation-4 small-navbar">
+      <button id="pref-back-btn" class="waves-effect btn-flat nav-button" onclick="closePrefs()"><i class="material-icons">arrow_back</i></button>
+    </nav>
+  </div>
+
+  <menu class="nav">
+    <ul id="slide-out" class="sidenav">
+      <li>
+        <div class="user-view">
+
+        </div>
+      </li>
+      <li><a class="waves-effect" href="#!"><i class="material-icons">date_range</i>Plan lekcji</a></li>
+      <li><a class="waves-effect" href="#!" onclick="showPrefs();"><i class="material-icons">settings</i>Ustawienia</a></li>
+    </ul>
+  </menu>
+
   <script type="text/javascript" src="cordova.js" async></script>
   <script type="text/javascript" src="scripts/jquery.min.js" async></script>
   <script type="text/javascript" src="./scripts/config.js" charset="utf-8" async></script>
