@@ -6,7 +6,6 @@
     "code-push": "^2.0.5",
     "cordova-android": "^7.0.0",
     "cordova-android-support-gradle-release": "^1.4.0",
-    "cordova-ios": "4.2.0",
     "cordova-plugin-crosswalk-webview": "^2.4.0",
     "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-dialogs": "^2.0.1",
@@ -20,7 +19,6 @@
     "cordova-plugin-vibration": "^3.1.0",
     "cordova-plugin-whitelist": "^1.2.2",
     "cordova-sqlite-storage": "^2.3.1",
-    "cordova-windows": "4.4.2",
     "uuid": "^3.2.1"
   },
   "cordova": {
@@ -48,8 +46,6 @@
       "cordova-plugin-statusbar": {}
     },
     "platforms": [
-      "ios",
-      "windows",
       "android"
     ]
   }

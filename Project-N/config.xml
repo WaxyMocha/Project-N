@@ -65,7 +65,5 @@
     </plugin>
     <plugin name="cordova-plugin-transparent-status-bar" spec="https://github.com/manugando/cordova-plugin-transparent-status-bar" />
     <plugin name="cordova-plugin-statusbar" spec="^2.4.2" />
-    <engine name="ios" spec="4.2.0" />
-    <engine name="windows" spec="4.4.2" />
     <engine name="android" spec="^7.0.0" />
 </widget>
