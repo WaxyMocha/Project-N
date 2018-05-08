@@ -16,8 +16,9 @@ function onDeviceReady() {
   //zainicjuj panel nawigacyjny (menu z lewej)
   initNav();
   initP();
+  loadConfig();
 
-  zaladujPlan(`./scripts/plan/o${config.defaultClass}.html`);
+  zaladujPlan(`./scripts/plan/o${config.klasa}.html`);
 
   //initDzien(); // tu się buguje, przeniesiono do genPlan();
 

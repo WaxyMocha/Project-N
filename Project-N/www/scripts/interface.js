@@ -8,10 +8,11 @@ let dzien;
 let dzienInstance;
 let p;
 let pInstance;
-let d = 0;
+let d = 0; //dzień tygodnia
 
 let initP = function () {
   p = document.getElementById('plan1');
+  p.innerHTML = config.klasa;
   pInstance = M.Dropdown.init(p);
 };
 
