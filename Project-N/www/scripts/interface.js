@@ -8,6 +8,7 @@ let dzien;
 let dzienInstance;
 let p;
 let pInstance;
+let prefsSelects;
 let d = 0; //dzień tygodnia
 
 let initP = function () {
@@ -218,6 +219,8 @@ let closePrefs = function () {
 };
 
 let showPrefs = function () {
+  prefsSelects = document.querySelectorAll('select');
+  prefsSelectsInst = M.FormSelect.init(prefsSelects);
   navInstance.close();
   let prefs = document.getElementById('preferences');
   prefs.style.opacity = '1';

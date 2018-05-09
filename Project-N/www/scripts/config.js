@@ -14,3 +14,7 @@ let loadConfig = function () {
     saveConfig();
   }
 };
+
+let savePrefs = function () {
+
+};
