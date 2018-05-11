@@ -4,6 +4,8 @@
 // Aby debugować kod ładowania strony w narzędziu cordova-simulate, na urządzeniach z systemem Android lub w emulatorach systemu Android: uruchom aplikację, ustaw punkty przerwania,
 // a następnie uruchom polecenie „window.location.reload()” w konsoli języka JavaScript.
 
+let pliki;
+
 document.addEventListener('deviceready', onDeviceReady.bind(this), false);
 
 function onDeviceReady() {
@@ -31,3 +33,27 @@ function onPause() {
 function onResume() {
   // TODO: Ta aplikacja została ponownie aktywowana. Przywróć tutaj stan aplikacji.
 };
+
+function listDir(path) {
+  window.resolveLocalFileSystemURL(path,
+    function (fileSystem) {
+      var reader = fileSystem.createReader();
+      reader.readEntries(
+        function (entries) {
+          // console.log(entries);
+          console.log(entries[0].lastModifiedDate);
+          pliki = entries;
+        },
+
+        function (err) {
+          //console.log(err);
+          return error;
+        }
+      );
+    }, function (err) {
+
+      //console.log(err);
+      return error;
+    }
+  );
+}

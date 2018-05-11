@@ -48,7 +48,8 @@ let pokazPlan = function (dzien, element) {
     let cBody = document.createElement('div');
     let sp = document.createElement('span');
     cHead.innerHTML = plan[0][i] + '. ';
-    console.log(temp);
+
+    // console.log(temp);
     if (temp.length == 0) { //okienko
       continue;
     } else if (temp.length == 4 || temp.length == 3) { //lekcje dzielone grupami
@@ -219,6 +220,7 @@ let closePrefs = function () {
 };
 
 let showPrefs = function () {
+  document.getElementById('prefKlasa').children[config.klasa - 1].selected = true;
   prefsSelects = document.querySelectorAll('select');
   prefsSelectsInst = M.FormSelect.init(prefsSelects);
   navInstance.close();

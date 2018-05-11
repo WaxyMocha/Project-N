@@ -6,6 +6,7 @@
 
 // Tworzy ramkę i ładuje plan do niej
 function zaladujPlan(url) {
+  document.getElementById('plan1').innerHTML = config.klasa;
   let iframe = document.createElement('iframe');
   iframe.src = url;
   iframe.id = 'tPlan';
