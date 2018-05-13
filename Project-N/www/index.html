@@ -17,9 +17,9 @@
 </head>
 
 <body>
-  <div class="app">
+  <div id="mainActivity" class="app">
     <nav id="appBar" class="nav-wrapper navbar-fixed elevation-4">
-      <button id="menu-btn" class="waves-effect btn-flat"><i class="material-icons">menu</i></button>
+      <button id="menu-btn" class="waves-effect btn-flat nav-button"><i class="material-icons">menu</i></button>
       <!-- <a class="dropdown-trigger btn-flat waves-effect btn-large" id="dzien1" href="#" data-target="dzien1c">Poniedziałek</a> -->
       <a class="btn-flat waves-effect btn-large" id="klasa" href="#"></a>
       <a class="dropdown-trigger btn-flat waves-effect btn-large" id="plan1" href="#" data-target="plan1c">2</a><br>
@@ -53,18 +53,8 @@
       </ul>
 
     </nav>
-    <menu class="nav">
-      <ul id="slide-out" class="sidenav">
-        <li>
-          <div class="user-view">
 
-          </div>
-        </li>
-        <li><a class="waves-effect" href="#!"><i class="material-icons">date_range</i>Plan lekcji</a></li>
-        <li><a class="waves-effect" href="#!"><i class="material-icons">settings</i>Ustawienia</a></li>
-      </ul>
-    </menu>
-    <main id="wrapper">
+    <main id="wrapper" class="wrapper">
       <section id="plan" class="row">
         <ul id="d0" class="col s12 collapsible"></ul>
         <ul id="d1" class="col s12 collapsible"></ul>
@@ -74,6 +64,54 @@
       </section>
     </main>
   </div>
+
+  <div id="preferences" class="app">
+    <nav class="nav-wrapper navbar-fixed elevation-4 small-navbar">
+      <button id="pref-back-btn" class="waves-effect btn-flat nav-button" onclick="closePrefs()"><i class="material-icons">arrow_back</i></button>
+      <button class="btn-flat waves-effect btn-large" id="savePrefs" onclick="savePrefs()" href="#">Zapisz</button>
+    </nav>
+
+    <main id="prefsWrapper" class="wrapper">
+      <section class="prefsSection" id="generalPrefs">
+        <h5>Ogólne</h5>
+        <section class="prefsOption">
+          <div>
+            Domyślna klasa
+          </div>
+          <div class="input-field col s12">
+            <select id="prefKlasa">
+              <option value="1">Oddział 1</option>
+              <option value="2">Oddział 2</option>
+              <option value="3">Oddział 3</option>
+              <option value="4">Oddział 4</option>
+              <option value="5">Oddział 5</option>
+              <option value="6">Oddział 6</option>
+              <option value="7">Oddział 7</option>
+              <option value="8">Oddział 8</option>
+              <option value="9">Oddział 9</option>
+              <option value="10">Oddział 10</option>
+              <option value="11">Oddział 11</option>
+              <option value="12">Oddział 12</option>
+              <option value="13">Oddział 13</option>
+            </select>
+          </div>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <menu class="nav">
+    <ul id="slide-out" class="sidenav">
+      <li>
+        <div class="user-view">
+
+        </div>
+      </li>
+      <li><a class="waves-effect" href="#!"><i class="material-icons">date_range</i>Plan lekcji</a></li>
+      <li><a class="waves-effect" href="#!" onclick="showPrefs();"><i class="material-icons">settings</i>Ustawienia</a></li>
+    </ul>
+  </menu>
+
   <script type="text/javascript" src="cordova.js" async></script>
   <script type="text/javascript" src="scripts/jquery.min.js" async></script>
   <script type="text/javascript" src="./scripts/config.js" charset="utf-8" async></script>

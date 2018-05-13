@@ -17,18 +17,38 @@
     padding-top: 23px;
     height: 128px;
     border-top: 1px;
+    z-index: 16;
 }
 
-#menu-btn {
+.small-navbar {
+  height: 80px;
+}
+
+.nav-button {
     width: 56px;
     height: 56px;
     margin: 0;
     margin-top: -1px;
-    color: white;
 }
 
-#menu-btn:focus {
+nav button {
+  color: white;
+}
+
+nav button:focus {
     background-color: transparent;
+}
+
+nav i {
+  color: white;
+}
+
+nav i:focus {
+    background-color: transparent;
+}
+
+#savePrefs {
+  color: white;
 }
 
 menu {
@@ -40,7 +60,7 @@ menu {
     height: 128px;
 }
 
-#wrapper {
+.wrapper {
     width: 100%;
     height: calc(100vh - 128px);
     overflow-y: auto;
@@ -103,4 +123,21 @@ menu {
 
 #klasa:active {
   background-color: transparent;
+}
+
+#preferences {
+  position: fixed;
+  top: 128px;
+  left: 0;
+  background-color: white;
+  z-index: 30;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s, top 0.2s;
+  transition-delay: 0.1s, 0;
+}
+
+#prefsWrapper {
+  height: calc(100vh - 80px);
+  padding: 10px;
 }

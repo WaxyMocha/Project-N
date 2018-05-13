@@ -8,6 +8,7 @@ let dzien;
 let dzienInstance;
 let p;
 let pInstance;
+let prefsSelects;
 let d = 0; //dzień tygodnia
 
 let initP = function () {
@@ -47,7 +48,8 @@ let pokazPlan = function (dzien, element) {
     let cBody = document.createElement('div');
     let sp = document.createElement('span');
     cHead.innerHTML = plan[0][i] + '. ';
-    console.log(temp);
+
+    // console.log(temp);
     if (temp.length == 0) { //okienko
       continue;
     } else if (temp.length == 4 || temp.length == 3) { //lekcje dzielone grupami
@@ -207,4 +209,32 @@ let showDzien = function () {
   }
 
   genPlan();
+};
+
+let closePrefs = function () {
+  let prefs = document.getElementById('preferences');
+  navInstance.close();
+  prefs.style.opacity = '';
+  prefs.style.pointerEvents = '';
+  prefs.style.top = '';
+};
+
+let showPrefs = function () {
+  document.getElementById('prefKlasa').children[config.klasa - 1].selected = true;
+  prefsSelects = document.querySelectorAll('select');
+  prefsSelectsInst = M.FormSelect.init(prefsSelects);
+  navInstance.close();
+  let prefs = document.getElementById('preferences');
+  prefs.style.opacity = '1';
+  prefs.style.pointerEvents = 'all';
+  prefs.style.top = '0';
+};
+
+let togglePrefs = function () {
+  let prefs = document.getElementById('preferences');
+  if (prefs.style.opacity = '1') {
+    showPrefs();
+  } else {
+    closePrefs();
+  }
 };
