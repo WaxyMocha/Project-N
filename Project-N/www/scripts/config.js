@@ -9,6 +9,7 @@
 let config = {
   klasa: 2,
   darkTheme: false,
+  pathToPlan: 'file:///android_asset/www/scripts/plan',
 };
 
 let saveConfig = function () {

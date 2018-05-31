@@ -141,3 +141,17 @@ menu {
   height: calc(100vh - 80px);
   padding: 10px;
 }
+
+#mainPr {
+  margin: 0;
+  background-color: white;
+  opacity: 0;
+}
+
+#mainPr::before {
+  background-color: rgb(232, 237, 0);
+}
+
+#mainPr::after {
+  background-color: rgb(232, 237, 0);
+}

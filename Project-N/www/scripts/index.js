@@ -4,7 +4,13 @@
 // Aby debugować kod ładowania strony w narzędziu cordova-simulate, na urządzeniach z systemem Android lub w emulatorach systemu Android: uruchom aplikację, ustaw punkty przerwania,
 // a następnie uruchom polecenie „window.location.reload()” w konsoli języka JavaScript.
 
-let pliki;
+let temp = {
+  pliki: undefined,
+};
+
+let info = {
+  modifDate: '2018-04-27T20:16:09.528Z',
+};
 
 document.addEventListener('deviceready', onDeviceReady.bind(this), false);
 
@@ -34,6 +40,11 @@ function onResume() {
   // TODO: Ta aplikacja została ponownie aktywowana. Przywróć tutaj stan aplikacji.
 };
 
+/*
+do zmiennej pliki zwraca zawartość folderu, jako tablica zawierająca "FileEntries" i "DirectoryEntries"
+zawierają one między innymi, ścieżkę i nazwę pliku/katalogu
+*/
+
 function listDir(path) {
   window.resolveLocalFileSystemURL(path,
     function (fileSystem) {
@@ -41,8 +52,10 @@ function listDir(path) {
       reader.readEntries(
         function (entries) {
           // console.log(entries);
-          console.log(entries[0].lastModifiedDate);
-          pliki = entries;
+          temp.pliki = entries;
+          console.log(entries);
+          let r = entries;
+          return r;
         },
 
         function (err) {
@@ -56,4 +69,21 @@ function listDir(path) {
       return error;
     }
   );
+}
+
+function planCache() {
+  listDir(config.pathToPlan);
+  while (temp.pliki == undefined) true;
+
+  zaladujPlan(config.pathToPlan + '/' + temp.pliki[0].name, 'data');
+  while (temp.modifDate == undefined) true;
+
+  if (info.modifDate <= temp.modifDate)
+  temp.pliki = undefined;
+}
+
+function sleep(ms) {
+  let st = new Date().getTime();
+  while ((new Date().getTime() - st) < ms) true;
+  return;
 }

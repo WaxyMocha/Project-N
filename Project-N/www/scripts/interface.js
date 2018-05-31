@@ -1,8 +1,11 @@
 // jscs:disable maximumLineLength
-let nav;
-let navInstance;
+
+let elements = {
+  mainPr: document.getElementById('mainPr'),
+};
+let instances = {};
 let menuBtn;
-let mainWrapper = document.getElementById('wrapper');
+elements.mainWrapper = document.getElementById('wrapper');
 let planInstance;
 let dzien;
 let dzienInstance;
@@ -12,29 +15,28 @@ let prefsSelects;
 let d = 0; //dzień tygodnia
 
 let initP = function () {
-  p = document.getElementById('plan1');
-  p.innerHTML = config.klasa;
-  pInstance = M.Dropdown.init(p);
+  elements.p = document.getElementById('plan1');
+  elements.p.innerHTML = config.klasa;
+  instances.p = M.Dropdown.init(elements.p);
 };
 
 let initDzien = function () {
-  dzien = document.getElementById('dzien1');
-  dzienInstance = M.Tabs.init(dzien, { swipeable: true, });
-  dzienInstance.select('d' + d);
+  elements.dzien = document.getElementById('dzien1');
+  instances.dzien = M.Tabs.init(elements.dzien, { swipeable: true, });
+  instances.dzien.select('d' + d);
 };
 
 let initNav = function () {
-  nav = document.querySelector('.sidenav');
-  navInstance = M.Sidenav.init(nav);
-  menuBtn = document.getElementById('menu-btn');
-  menuBtn.addEventListener('click', function () {
-    navInstance.open();
+  elements.nav = document.querySelector('.sidenav');
+  instances.nav = M.Sidenav.init(elements.nav);
+  elements.menuBtn = document.getElementById('menu-btn');
+  elements.menuBtn.addEventListener('click', function () {
+    instances.nav.open();
   });
 };
 
 let pokazPlan = function (dzien, element) {
   if (element == undefined) {
-    element = document.getElementById('plan');
     genPlan();
     return;
   }
@@ -213,7 +215,7 @@ let showDzien = function () {
 
 let closePrefs = function () {
   let prefs = document.getElementById('preferences');
-  navInstance.close();
+  instances.nav.close();
   prefs.style.opacity = '';
   prefs.style.pointerEvents = '';
   prefs.style.top = '';
@@ -222,8 +224,8 @@ let closePrefs = function () {
 let showPrefs = function () {
   document.getElementById('prefKlasa').children[config.klasa - 1].selected = true;
   prefsSelects = document.querySelectorAll('select');
-  prefsSelectsInst = M.FormSelect.init(prefsSelects);
-  navInstance.close();
+  instances.prefsSelects = M.FormSelect.init(prefsSelects);
+  instances.nav.close();
   let prefs = document.getElementById('preferences');
   prefs.style.opacity = '1';
   prefs.style.pointerEvents = 'all';
@@ -238,3 +240,13 @@ let togglePrefs = function () {
     closePrefs();
   }
 };
+
+function toggleMainPr() {
+  if (elements.mainPr.style.opacity == '1') {
+    elements.mainPr.style.opacity = '';
+    elements.mainPr.classList.remove('progress');
+  } else {
+    elements.mainPr.style.opacity = '1';
+    elements.mainPr.classList.add('progress');
+  }
+}
