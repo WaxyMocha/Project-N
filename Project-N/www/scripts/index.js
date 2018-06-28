@@ -9,51 +9,46 @@ let pliki;
 document.addEventListener('deviceready', onDeviceReady.bind(this), false);
 
 function onDeviceReady() {
-  // Obsługa zdarzeń wstrzymywania i wznawiania działania oprogramowania Cordova
-  document.addEventListener('pause', onPause.bind(this), false);
-  document.addEventListener('resume', onResume.bind(this), false);
-  navigator.splashscreen.hide();
+	// Obsługa zdarzeń wstrzymywania i wznawiania działania oprogramowania Cordova
+	document.addEventListener('pause', onPause.bind(this), false);
+	document.addEventListener('resume', onResume.bind(this), false);
+	navigator.splashscreen.hide();
 
-  //window.plugins.headerColor.tint("#149b07"); //kolor w widoku otwartych apek
-  //zainicjuj panel nawigacyjny (menu z lewej)
-  initNav();
-  initP();
-  loadConfig();
+	//zainicjuj panel nawigacyjny (menu z lewej)
+	initNav();
+	initP();
+	loadConfig();
 
-  zaladujPlan(`./scripts/plan/o${config.klasa}.html`);
-
-  //initDzien(); // tu się buguje, przeniesiono do genPlan();
+	zaladujPlan(`./scripts/plan/o${config.klasa}.html`);
 
 };
 
 function onPause() {
-  // TODO: Ta aplikacja została zawieszona, Zapisz tutaj stan aplikacji. (np. powrót do ekranu głównego)
+	// TODO: Ta aplikacja została zawieszona, Zapisz tutaj stan aplikacji. (np. powrót do ekranu głównego)
 };
 
 function onResume() {
-  // TODO: Ta aplikacja została ponownie aktywowana. Przywróć tutaj stan aplikacji.
+	// TODO: Ta aplikacja została ponownie aktywowana. Przywróć tutaj stan aplikacji.
 };
 
 function listDir(path) {
-  window.resolveLocalFileSystemURL(path,
-    function (fileSystem) {
-      var reader = fileSystem.createReader();
-      reader.readEntries(
-        function (entries) {
-          // console.log(entries);
-          console.log(entries[0].lastModifiedDate);
-          pliki = entries;
-        },
+	window.resolveLocalFileSystemURL(path,
 
-        function (err) {
-          //console.log(err);
-          return error;
-        }
-      );
-    }, function (err) {
+		function (fileSystem) {
+			var reader = fileSystem.createReader();
+			reader.readEntries(
 
-      //console.log(err);
-      return error;
-    }
-  );
+				function (entries) {
+					console.log(entries[0].lastModifiedDate);
+					pliki = entries;
+				},
+
+				function (err) {
+					return err;
+				}
+			);
+		}, function (err) {
+			return err;
+		}
+	);
 }
