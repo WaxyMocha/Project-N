@@ -46,138 +46,141 @@ function showPlan(day, element) {
 	element.innerHTML = '';
 
 	for (let i = 1; i < plan[day + 2].length; i++) {
-		let temp = $.parseHTML(plan[day + 2][i]);
-		let li = document.createElement('li');
-		let cHead = document.createElement('div');
-		let cBody = document.createElement('div');
-		let sp = document.createElement('span');
-		cHead.innerHTML = plan[0][i] + '. ';
+		let lesson = $.parseHTML(plan[day + 2][i]);
+		let HTMLElements = {
+			li: document.createElement('li'),
+			cHead: document.createElement('div'),
+			cBody: document.createElement('div'),
+			span: document.createElement('span')
+		};
+		let group = [{}];
 
-		if (temp.length === 0) { //okienko
+		HTMLElements.cBody.innerHTML = plan[0][i] + '. ';
+
+		if (lesson.length === 0) { //okienko
 			continue;
-		} else if (temp.length === 4 || temp.length === 3) { //lekcje dzielone grupami
-			let gr1 = {
-				lek: temp[0].children[0].innerHTML.replace('-1/2', ''),
-				nau: temp[0].children[1].innerHTML,
-				gab: temp[0].children[2].innerHTML,
+		} else if (lesson.length === 4 || lesson.length === 3) { //lessoncje dzielone grupami
+			group[0] = {
+				lesson: lesson[0].children[0].innerHTML.replace('-1/2', ''),
+				teacher: lesson[0].children[1].innerHTML,
+				classroom: lesson[0].children[2].innerHTML,
 			};
-			let gr2 = {
-				lek: temp[2].children[0].innerHTML.replace('-2/2', ''),
-				nau: temp[2].children[1].innerHTML,
-				gab: temp[2].children[2].innerHTML,
+			group[1] = {
+				lesson: lesson[2].children[0].innerHTML.replace('-2/2', ''),
+				teacher: lesson[2].children[1].innerHTML,
+				classroom: lesson[2].children[2].innerHTML,
 			};
-			cHead.innerHTML += `Grupa 1: ${gr1.lek}. Grupa 2: ${gr2.lek}`;
-			sp.innerHTML = `Nauczyciel: ${gr1.nau}/${gr2.nau}<br>Gabinet: ${gr1.gab}/${gr2.gab}`;
-		} else if (temp.length === 2 || (temp.length === 1 && (temp.children || temp[0].children))) { //okienko jednej z grup
-			if (temp[0].children[0].innerHTML.search('-1/2') !== -1) { //jeśli grupa 1
-				let gr1 = {
-					lek: temp[0].children[0].innerHTML.replace('-1/2', ''),
-					nau: temp[0].children[1].innerHTML,
-					gab: temp[0].children[2].innerHTML,
-				};
-				cHead.innerHTML += `Grupa 1: ${gr1.lek}. Grupa 2: Wolne`;
-				sp.innerHTML = `Nauczyciel: ${gr1.nau}/--<br>Gabinet: ${gr1.gab}/--`;
+			HTMLElements.cHead.innerHTML += `Grupa 1: ${group[0].lesson}. Grupa 2: ${group[1].lesson}`;
+			HTMLElements.span.innerHTML = `Nauczyciel: ${group[0].teacher}/${group[1].teacher}<br>Gabinet: ${group[0].classroom}/${group[1].classroom}`;
 
-			} else if (temp[0].children[0].innerHTML.search('-2/2') !== -1) { //jeśli grupa 2
-				let gr2 = {
-					lek: temp[0].children[0].innerHTML.replace('-2/2', ''),
-					nau: temp[0].children[1].innerHTML,
-					gab: temp[0].children[2].innerHTML,
+		} else if (lesson.length === 2 || (lesson.length === 1 && (lesson.children || lesson[0].children)) ) { //okienko jednej z grup
+			if (lesson[0].children[0].innerHTML.search('-1/2') !== -1) { //jeśli grupa 1
+				group[0] = {
+					lesson: lesson[0].children[0].innerHTML.replace('-1/2', ''),
+					teacher: lesson[0].children[1].innerHTML,
+					classroom: lesson[0].children[2].innerHTML,
 				};
-				cHead.innerHTML += `Grupa 1: Wolne. Grupa 2: ${gr2.lek}`;
-				sp.innerHTML = `Nauczyciel: --/${gr2.nau}<br>Gabinet: --/${gr2.gab}`;
+				HTMLElements.cHead.innerHTML += `Grupa 1: ${group[0].lesson}. Grupa 2: Wolne`;
+				HTMLElements.span.innerHTML = `Nauczyciel: ${group[0].teacher}/--<br>Gabinet: ${group[0].classroom}/--`;
+
+			} else if (lesson[0].children[0].innerHTML.search('-2/2') !== -1) { //jeśli grupa 2
+				group[1] = {
+					lesson: lesson[0].children[0].innerHTML.replace('-2/2', ''),
+					teacher: lesson[0].children[1].innerHTML,
+					classroom: lesson[0].children[2].innerHTML,
+				};
+				HTMLElements.cHead.innerHTML += `Grupa 1: Wolne. Grupa 2: ${group[1].lesson}`;
+				HTMLElements.span.innerHTML = `Nauczyciel: --/${group[1].teacher}<br>Gabinet: --/${group[1].classroom}`;
 			}
-		} else if (temp.length === 5 && (temp[1].textContent === '-1/2 ' || temp[1].textContent === '-2/2 ')) {
-			if (temp[1].textContent === '-1/2 ') {
-				cHead.innerHTML += `Grupa 1: ${temp[0].innerHTML}. Grupa 2: Wolne`;
-				sp.innerHTML = `Nauczyciel: ${temp[2].innerHTML}/--<br>Gabinet: ${temp[4].innerHTML}/--`;
+		} else if (lesson.length === 5 && (lesson[1].textContent === '-1/2 ' || lesson[1].textContent === '-2/2 ')) {
+			if (lesson[1].textContent === '-1/2 ') {
+				HTMLElements.cHead.innerHTML += `Grupa 1: ${lesson[0].innerHTML}. Grupa 2: Wolne`;
+				HTMLElements.span.innerHTML = `Nauczyciel: ${lesson[2].innerHTML}/--<br>Gabinet: ${lesson[4].innerHTML}/--`;
 			}
-		} else if (temp.length === 5 && (temp[1].textContent !== '-1/2 ' || temp[1].textContent !== '-2/2 ')) { //lekcja całą klasą
+		} else if (lesson.length === 5 && (lesson[1].textContent !== '-1/2 ' || lesson[1].textContent !== '-2/2 ')) { //lekcja całą klasą
 			let kl = {
-				lek: temp[0].innerHTML,
-				nau: temp[2].innerHTML,
-				gab: temp[4].innerHTML,
+				lesson: lesson[0].innerHTML,
+				teacher: lesson[2].innerHTML,
+				classroom: lesson[4].innerHTML,
 			};
-			cHead.innerHTML += `${kl.lek}`;
-			sp.innerHTML = `Nauczyciel: ${kl.nau}<br>Gabinet: ${kl.gab}`;
-		} else if (temp.length === 1 && (!temp.children || !temp[0].children)) { //lekcja całą klasą
+			HTMLElements.cHead.innerHTML += `${kl.lesson}`;
+			HTMLElements.span.innerHTML = `Nauczyciel: ${kl.teacher}<br>Gabinet: ${kl.classroom}`;
+		} else if (lesson.length === 1 && (!lesson.children || !lesson[0].children)) { //lessoncja całą klasą
 			let kl = {};
-			if (/\d/.test(temp[0].textContent) === false) {
+			if (/\d/.test(lesson[0].textContent) === false) {
 				kl = {
-					lek: temp[0].textContent,
-					nau: '--',
-					gab: '--',
+					lesson: lesson[0].textContent,
+					teacher: '--',
+					classroom: '--',
 				};
-			} else if (/\d/.test(temp[0].textContent)) {
-				let s = temp[0].textContent;
+			} else if (/\d/.test(lesson[0].textContent)) {
+				let s = lesson[0].textContent;
 				let l = s.length;
 				if (!isNaN(Number(s[l - 3]))) {
-					kl.gab = s.slice(l - 3);
+					kl.classroom = s.slice(l - 3);
 					s = s.slice(0, l - 4);
 				} else {
-					kl.gab = s.slice(l - 2);
+					kl.classroom = s.slice(l - 2);
 					s = s.slice(0, l - 3);
 				}
 
 				l = s.length;
-				kl.nau = s.slice(s.lastIndexOf(' ') + 1);
-				kl.lek = s.slice(0, s.lastIndexOf(' '));
+				kl.teacher = s.slice(s.lastIndexOf(' ') + 1);
+				kl.lesson = s.slice(0, s.lastIndexOf(' '));
 			}
 
-			cHead.innerHTML += `${kl.lek}`;
-			sp.innerHTML = `Nauczyciel: ${kl.nau}<br>Gabinet: ${kl.gab}`;
-		} else if (temp.length === 7) { //wf... cause... fuck you
-			let gr1;
-			let gr2;
-			if (temp[0].children && temp[0].children.length !== 0) {
-				gr1 = {
-					lek: temp[0].children[0].innerHTML.replace('-1/2', ''),
-					nau: temp[0].children[1].innerHTML,
-					gab: temp[0].children[2].innerHTML,
+			HTMLElements.cHead.innerHTML += `${kl.lesson}`;
+			HTMLElements.span.innerHTML = `Nauczyciel: ${kl.teacher}<br>Gabinet: ${kl.classroom}`;
+		} else if (lesson.length === 7) { //wf... cause... fuck you
+			if (lesson[0].children && lesson[0].children.length !== 0) {
+				group[0] = {
+					lesson: lesson[0].children[0].innerHTML.replace('-1/2', ''),
+					teacher: lesson[0].children[1].innerHTML,
+					classroom: lesson[0].children[2].innerHTML,
 				};
-				gr2 = {
-					lek: temp[2].innerHTML,
-					nau: temp[4].innerHTML,
-					gab: temp[6].innerHTML,
+				group[1] = {
+					lesson: lesson[2].innerHTML,
+					teacher: lesson[4].innerHTML,
+					classroom: lesson[6].innerHTML,
 				};
-			} else if (temp[6].children && temp[6].children.length !== 0) {
-				gr1 = {
-					lek: temp[0].innerHTML,
-					nau: temp[2].innerHTML,
-					gab: temp[4].innerHTML,
+			} else if (lesson[6].children && lesson[6].children.length !== 0) {
+				group[0] = {
+					lesson: lesson[0].innerHTML,
+					teacher: lesson[2].innerHTML,
+					classroom: lesson[4].innerHTML,
 
 				};
-				gr2 = {
-					lek: temp[6].children[0].innerHTML.replace('-2/2', ''),
-					nau: temp[6].children[1].innerHTML,
-					gab: temp[6].children[2].innerHTML,
+				group[1] = {
+					lesson: lesson[6].children[0].innerHTML.replace('-2/2', ''),
+					teacher: lesson[6].children[1].innerHTML,
+					classroom: lesson[6].children[2].innerHTML,
 				};
 			}
 
-			cHead.innerHTML += `Grupa 1: ${gr1.lek}. Grupa 2: ${gr2.lek}`;
-			sp.innerHTML = `Nauczyciel: ${gr1.nau}/${gr2.nau}<br>Gabinet: ${gr1.gab}/${gr2.gab}`;
+			HTMLElements.cHead.innerHTML += `Grupa 1: ${group[0].lesson}. Grupa 2: ${group[1].lesson}`;
+			HTMLElements.span.innerHTML = `Nauczyciel: ${group[0].teacher}/${group[1].teacher}<br>Gabinet: ${group[0].classroom}/${group[1].classroom}`;
 		}
 
-		sp.innerHTML += `<br><span class="clockP"><i class="material-icons">access_time</i> ${plan[1][i]}</span>`;
+		HTMLElements.span.innerHTML += `<br><span class="clockP"><i class="material-icons">access_time</i> ${plan[1][i]}</span>`;
 
-		cHead.classList.add('collapsible-header');
-		cBody.appendChild(sp);
-		cBody.classList.add('collapsible-body');
+		HTMLElements.cHead.classList.add('collapsible-header');
+		HTMLElements.cBody.appendChild(HTMLElements.span);
+		HTMLElements.cBody.classList.add('collapsible-body');
 
-		li.appendChild(cHead);
-		li.appendChild(cBody);
-		element.appendChild(li);
+		HTMLElements.li.appendChild(HTMLElements.cHead);
+		HTMLElements.li.appendChild(HTMLElements.cBody);
+		element.appendChild(HTMLElements.li);
 	}
 }
 
 function genPlan() {
 	document.getElementById('klasa').innerHTML = klasa;
-	pokazPlan(0, document.getElementById('d0'));
-	pokazPlan(1, document.getElementById('d1'));
-	pokazPlan(2, document.getElementById('d2'));
-	pokazPlan(3, document.getElementById('d3'));
-	pokazPlan(4, document.getElementById('d4'));
-	setTimeout(initDzien, 100);
+	showPlan(0, document.getElementById('d0'));
+	showPlan(1, document.getElementById('d1'));
+	showPlan(2, document.getElementById('d2'));
+	showPlan(3, document.getElementById('d3'));
+	showPlan(4, document.getElementById('d4'));
+	setTimeout(initDay, 100);
 	setTimeout(function () {
 		document.getElementById('plan').children[0].style.height = 'calc(100vh - 128px)';
 		document.getElementById('plan').children[0].style.overflowY = 'auto';
