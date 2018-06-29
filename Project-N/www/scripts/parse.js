@@ -4,72 +4,77 @@
 // NIE MOŻNA wpływać na zawartość ramki, jeśli plik html nie jest przechowywany lokalnie.
 // Po zakończeniu parsowania ramka jest usuwana, a plan jest dostępny w zmiennej "plan"
 
-class Parse {
-	constructor() {
-		this.plan = "";
-		this.klasa = "";
-	}
+function Parse() {
+	this.plan = "";
+	this.klasa = "";
+}
 
-	// Tworzy ramkę i ładuje plan do niej
-	static zaladujPlan(url) {
-		document.getElementById('plan1').innerHTML = config.klasa;
-		let iframe = document.createElement('iframe');
+Parse.prototype.zaladujPlan = function(url) {
+	document.getElementById('plan1').innerHTML = config.klasa;
+
+	let iframe = document.createElement('iframe');
+
+	{
 		iframe.src = url;
 		iframe.id = 'tPlan';
 		iframe.style.display = 'none';
-		document.body.appendChild(iframe);
-		iframe.addEventListener('load', this.parsePlan);
 	}
 
-	getClass (ifr) {
-		this.klasa = ifr.contentWindow.document.querySelector('.tytulnapis').innerHTML;
-	};
+	document.body.appendChild(iframe);
+	iframe.addEventListener('load', this.parsePlan);
+};
 
-	parsePlan() {
-		const iframe = document.getElementById('tPlan');
-		let tabela = iframe.contentWindow.document.querySelector('.tabela'); //wczytanie tabelki z ramki
-		getClass(iframe);
-		let arr = [];
+Parse.prototype.getClass = function(ifr) {
+	return ifr.contentWindow.document.querySelector('.tytulnapis').innerHTML;
+};
 
-		let rows = tabela.children[0].children; //pobranie wierszy tabelki
+Parse.prototype.parsePlan = function() {
+	const iframe = document.getElementById('tPlan');
+	let tabela = iframe.contentWindow.document.querySelector('.tabela'); //wczytanie tabelki z ramki
 
-		for (let i = 0; i < rows.length; i++) { // dodanie pojedyńczych elementów do arr
-			let tempArr = [];
-			for (let j = 0; j < rows[i].children.length; j++) {
+	this.klasa = this.getClass(iframe);
 
-				if (rows[i].children[j].innerHTML !== '&nbsp;') {
-					tempArr.push(rows[i].children[j].innerHTML);
-				} else {
-					tempArr.push('');
-				}
-			}
+	let arr = [];
 
-			arr.push(tempArr);
-		}
+	let rows = tabela.children[0].children; //pobranie wierszy tabelki
 
-		let tempArr = new Array(arr[0].length); //przygotowanie tabeli do przegrupowania elementów
-		for (let i = 0; i < tempArr.length; i++) {
-			tempArr[i] = new Array(arr.length);
-		}
+	for (let i = 0; i < rows.length; i++) { // dodanie pojedyńczych elementów do arr
+		let tempArr = [];
+		for (let j = 0; j < rows[i].children.length; j++) {
 
-		for (let i = 0; i < arr.length; i++) { //grupowanie elementów kolumnami, zamiast wierszami
-			for (let j = 0; j < arr[i].length; j++) {
-				if (arr[i][j] !== '&nbsp;') {
-					tempArr[j][i] = arr[i][j];
-				} else {
-					tempArr[j][i] = '';
-				}
-
+			if (rows[i].children[j].innerHTML !== '&nbsp;') {
+				tempArr.push(rows[i].children[j].innerHTML);
+			} else {
+				tempArr.push('');
 			}
 		}
 
-		arr = tempArr;
-		plan = arr;
-		iframe.parentNode.removeChild(iframe); //usunięcie ramki
-
-		//pokaż odpowiedni dzień tygodnia
-		showDzien();
-		return arr;
+		arr.push(tempArr);
 	}
+
+	let tempArr = new Array(arr[0].length); //przygotowanie tabeli do przegrupowania elementów
+	for (let i = 0; i < tempArr.length; i++) {
+		tempArr[i] = new Array(arr.length);
+	}
+
+	for (let i = 0; i < arr.length; i++) { //grupowanie elementów kolumnami, zamiast wierszami
+		for (let j = 0; j < arr[i].length; j++) {
+			if (arr[i][j] !== '&nbsp;') {
+				tempArr[j][i] = arr[i][j];
+			} else {
+				tempArr[j][i] = '';
+			}
+
+		}
+	}
+
+	arr = tempArr;
+	this.plan = arr;
+	iframe.parentNode.removeChild(iframe); //usunięcie ramki
+
+	//pokaż odpowiedni dzień tygodnia
+	showDzien();
+	return arr;
 }
+
 
