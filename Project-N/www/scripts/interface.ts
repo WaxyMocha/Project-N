@@ -1,15 +1,15 @@
 // jscs:disable maximumLineLength
 
-declare var M:any;
+declare var M: any;
 
-import Parse from "./parse.js";
+import {Parse} from "./parse";
 import {Config} from "./config";
 
 class Interface {
 	nav = null;
 	navInstance = null;
 	menuBtn = null;
-	mainWrapper = document.getElementById('wrapper');
+	//mainWrapper = document.getElementById('wrapper');
 	planInstance = null;
 	dzien = null;
 	dzienInstance = null;
@@ -19,8 +19,14 @@ class Interface {
 	prefsSelects = null;
 	day = 0; //dzień tygodnia
 
-	config = new Config();
-	parse = new Parse;
+
+	config: Config;
+	parse: Parse;
+
+	constructor(parse: Parse, config: Config) {
+		this.parse = parse;
+		this.config = config;
+	}
 
 	initPlan() {
 		this.p = document.getElementById('plan1');
@@ -39,8 +45,7 @@ class Interface {
 		this.navInstance = M.Sidenav.init(this.nav);
 		this.menuBtn = document.getElementById('menu-btn');
 		this.menuBtn.addEventListener('click', function () {
-			let interface_ = new Interface();
-			interface_.navInstance.open();
+			this.interface_.navInstance.open();
 		});
 	}
 
@@ -50,21 +55,23 @@ class Interface {
 			this.genPlan();
 			return;
 		}
+		console.log(day, element);
+		console.log(this.parse.getPlan());
+
+		let group: Array<{lesson: string, teacher: string, classroom: string}> = [];
 
 		this.planInstance = M.Collapsible.init(element);
 		element.innerHTML = '';
 
-		for (let i = 1; i < this.parse.plan[day + 2].length; i++) {
-			let lesson = $.parseHTML(this.parse.plan[day + 2][i]);
+		for (let i = 1; i < this.parse.getPlan()[day + 2].length; i++) {
+			let lesson = <HTMLAnchorElement[]>$.parseHTML(this.parse.plan[day + 2][i]);
 			console.log(lesson);
-			/*
 			let HTMLElements = {
 				li: document.createElement('li'),
 				cHead: document.createElement('div'),
 				cBody: document.createElement('div'),
 				span: document.createElement('span')
 			};
-			let group = [{}];
 
 			HTMLElements.cBody.innerHTML = this.parse.plan[0][i] + '. ';
 
@@ -81,10 +88,10 @@ class Interface {
 					teacher: lesson[2].children[1].innerHTML,
 					classroom: lesson[2].children[2].innerHTML,
 				};
-				HTMLElements.cHead.innerHTML += `Grupa 1: ${group[0].lesson}. Grupa 2: ${group[1].lesson}`;
-				HTMLElements.span.innerHTML = `Nauczyciel: ${group[0].teacher}/${group[1].teacher}<br>Gabinet: ${group[0].classroom}/${group[1].classroom}`;
+				HTMLElements.cHead.innerHTML += "Grupa 1: " + group[0].lesson + ". Grupa 2: " + group[1].lesson;
+				HTMLElements.span.innerHTML = "Nauczyciel: " + group[0].teacher + "/" + group[1].teacher + "<br>Gabinet: " + group[0].classroom + "/" + group[1].classroom;
 
-			} else if (lesson.length === 2 || (lesson.length === 1 && (lesson.children || lesson[0].children))) { //okienko jednej z grup
+			} else if (lesson.length === 2 || (lesson.length === 1 && lesson[0].children)) { //okienko jednej z grup
 				if (lesson[0].children[0].innerHTML.search('-1/2') !== -1) { //jeśli grupa 1
 					group[0] = {
 						lesson: lesson[0].children[0].innerHTML.replace('-1/2', ''),
@@ -116,10 +123,9 @@ class Interface {
 				};
 				HTMLElements.cHead.innerHTML += `${kl.lesson}`;
 				HTMLElements.span.innerHTML = `Nauczyciel: ${kl.teacher}<br>Gabinet: ${kl.classroom}`;
-			} else if (lesson.length === 1 && (!lesson.children || !lesson[0].children)) { //lessoncja całą klasą
-				let kl = {};
+			} else if (lesson.length === 1 && !lesson[0].children) { //lessoncja całą klasą
 				if (/\d/.test(lesson[0].textContent) === false) {
-					kl = {
+					group[0] = {
 						lesson: lesson[0].textContent,
 						teacher: '--',
 						classroom: '--',
@@ -128,20 +134,20 @@ class Interface {
 					let s = lesson[0].textContent;
 					let l = s.length;
 					if (!isNaN(Number(s[l - 3]))) {
-						kl.classroom = s.slice(l - 3);
+						group[0].classroom = s.slice(l - 3);
 						s = s.slice(0, l - 4);
 					} else {
-						kl.classroom = s.slice(l - 2);
+						group[0].classroom = s.slice(l - 2);
 						s = s.slice(0, l - 3);
 					}
 
 					l = s.length;
-					kl.teacher = s.slice(s.lastIndexOf(' ') + 1);
-					kl.lesson = s.slice(0, s.lastIndexOf(' '));
+					group[0].teacher = s.slice(s.lastIndexOf(' ') + 1);
+					group[0].lesson = s.slice(0, s.lastIndexOf(' '));
 				}
 
-				HTMLElements.cHead.innerHTML += `${kl.lesson}`;
-				HTMLElements.span.innerHTML = `Nauczyciel: ${kl.teacher}<br>Gabinet: ${kl.classroom}`;
+				HTMLElements.cHead.innerHTML += `${group[0].lesson}`;
+				HTMLElements.span.innerHTML = `Nauczyciel: ${group[0].teacher}<br>Gabinet: ${group[0].classroom}`;
 			} else if (lesson.length === 7) { //wf... cause... fuck you
 				if (lesson[0].children && lesson[0].children.length !== 0) {
 					group[0] = {
@@ -181,8 +187,8 @@ class Interface {
 			HTMLElements.li.appendChild(HTMLElements.cHead);
 			HTMLElements.li.appendChild(HTMLElements.cBody);
 			element.appendChild(HTMLElements.li);
-		*/
 		}
+		console.log(group);
 	}
 
 	genPlan() {
@@ -208,6 +214,8 @@ class Interface {
 
 	planCh(plan) {
 		this.parse.zaladujPlan(`./scripts/plan/o${plan}.html`);
+		this.showDzien();
+
 		this.p.innerHTML = plan;
 	}
 

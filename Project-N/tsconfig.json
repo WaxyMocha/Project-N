@@ -3,8 +3,7 @@
     "outDir": "./www/scripts",
     "module": "amd",
     "target": "es5",
-    "sourceMap": true,
-    "allowSyntheticDefaultImports": true
+    "sourceMap": true
   },
   "exclude": [
     "node_modules"

@@ -6,7 +6,7 @@
   -dodaj do savePrefs() przekazywanie wartości do obiektu config
 */
 
-import Parse from "./parse";
+import {Parse} from "./parse";
 
 class Config {
 	public config = {
@@ -30,9 +30,9 @@ class Config {
 		//zmień domyślnie ładowaną klasę
 		this.config.klasa = Number((<HTMLInputElement>document.getElementById('prefKlasa')).value);
 
-		let parse = new Parse();
+		//let parse = new Parse();
 		//przeładuj plan
-		parse.zaladujPlan(`./scripts/plan/o${this.config.klasa}.html`);
+		//parse.zaladujPlan(`./scripts/plan/o${this.config.klasa}.html`);
 
 		this.saveConfig();
 	}
