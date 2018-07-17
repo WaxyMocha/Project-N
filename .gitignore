@@ -77,3 +77,9 @@ platforms/android/CordovaLib/gen
 platforms/android/CordovaLib/local.properties
 
 \.idea/
+
+*.map
+index.js
+interface.js
+config.js
+Project-N/www/scripts/parse\.js
